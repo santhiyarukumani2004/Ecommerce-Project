@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurti</title>
+                              <!-- fontawesome -->
+       <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
+                                  <!-- iconicon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                                  <!-- style css -->
+    <link rel="stylesheet"href="/stylesheets/style1.css">
+                                <!-- responsive -->
+   {{!-- <link rel="stylesheet" href="responsive.css">                            --}}
+   <style>
+    .close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.msg{color:goldenrod;
+   padding: 3px;
+   font-weight: bold;
+   font-size: 0.8em;
+   letter-spacing: 1.3px;}
+    .special.amount{font-size: 1rem;}
+    .custom-tooltip {
+       position: relative;
+       display: inline-block;
+     }
+   
+     .custom-tooltip:hover .tooltip-content {
+       opacity: 1;
+       transform: translateY(0);
+     }
+     .tooltip-content {
+       position: absolute;
+       bottom: 100%; /* Position above the element */
+       left: 50%; /* Center horizontally */
+       transform: translateX(-50%) translateY(-10px); /* Adjust horizontal and vertical position */
+       padding: 4px 8px;
+       background-color: #e74c3c; /* Change this to your desired background color */
+       color: #000; /* Change text color for better visibility */
+       border-radius: 4px;
+       white-space: nowrap;
+       font-size: 14px;
+       opacity: 0;
+       transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+       pointer-events: none;
+     }
+     /* CSS for the custom alert box */
+   .custom-alert {
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.7);
+     justify-content: center;
+     align-items: center;
+     z-index: 1000000;
+   }
+   
+   .custom-alert-content {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     text-align: center;
+   }
+   
+   #custom-alert-message {
+     font-size: 18px;
+     margin-bottom: 10px;
+   }
+   
+   #custom-alert-close {
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     padding: 10px 20px;
+     cursor: pointer;
+     border-radius: 5px;
+     width: 50%;
+     margin: auto !important;
+   }
+   </style>
+</head>
+<body>
+ <!-- Custom Alert Box -->
+    <div id="custom-alert" class="custom-alert">
+        <div class="custom-alert-content">
+            <span id="custom-alert-message"></span>
+           <button id="custom-alert-close">Close</button>
+
+        </div>
+    </div>
+  <!-- naigation section -->
+
+ <section>
+    <header>
+  <nav class="navbar navbar-expand-lg navbar-light navbar-bg mt-lg-0 mt-md-0 fixed-top">
+      <!-- Navbar Toggler Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Logo in the Center -->
+
+       <a class="navbar-brand" href="#" id="logo">
+        <img src="images/ddd.png" width="30" height="30" alt="boutique" loading="lazy"class="d-inline-block align-top img-fluid text-light" >
+        <h5 class="italic">Fabulous Boutique</h5></a>
+      
+      
+  
+      <!-- Contact and Cart Icons (Fixed) -->
+      
+        <div id="icons" class="fixed-icons position-fixed right-0" class="tooltip" title="click to view account" >
+          <ion-icon name="person-circle-outline" id="mycontact" ></ion-icon>
+          <div id="account-options">
+           <ul>
+             <li><a href="/profile">Account</a></li>
+             <li><a href="/orders">Orders</a></li>
+             <li><a href="/logout">Logout</a></li>
+             <li><a href="/index">Report</a></li>
+           </ul>
+         </div>
+         
+         <div class="cart">
+           <div id="cart-count">0</div>
+          <ion-icon name="cart-outline" id="cart-icon"></ion-icon>
+          </div>
+        </div>
+       
+    {{!-- cart --}}
+<div class="cart-package">
+        <div class="cart-title">Cart Items</div>
+          {{!-- <div class=" msg "><i class="fa-solid fa-triangle-exclamation"></i>Please Login To Fill your Details for Order</div> --}}
+        <div class="message2">
+         <img src="/images/empty-cart.png" class="img-fluid" id="car"></ion-icon>
+          <p>Your Cart Is Empty!!</p>
+          </div>
+        <div class="message1">Item Removed Your Cart</div>
+        <div class=" message ">Product Already Exist In Cart</div>
+          
+            <br><br>
+        <div class="cart-content ">
+       
+
+{{!-- 
+          <div class="cart-box">
+               <div class="image-column">
+               <img src="/images/kurti.png" alt="" class="cart-img">
+                </div>
+                <div class="detail-column">
+                <div class="cart-dress-title">Navy Blue kurti</div>
+               <div class="price-box">
+                  <div class="cart-price">Rs.1000</div>
+                   <div class="cart-amt">Rs.1000</div>
+               </div>
+              </div>
+            <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+              <div class="trash-column">
+                 <ion-icon name="trash" class="cart-remove"></ion-icon>
+              </div>
+          </div>
+          
+         <div class="cart-box">
+  <div class="image-column">
+    <img src="/images/girl.jpg" alt="" class="cart-img">
+  </div>
+  <div class="detail-column">
+    <div class="cart-dress-title">Blue with orange shade gown</div>
+    <div class="price-box">
+      <div class="cart-price">Rs.1000</div>
+      <div class="cart-amt">Rs.1000</div>
+    </div>
+  </div>
+  <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+
+  <div class="trash-column">
+    <ion-icon name="trash" class="cart-remove"></ion-icon>
+  </div>
+          </div> --}}
+</div>
+ <div class="cart"  id="cart">
+  <div id="cart-count" class="cart-count">0</div>
+  <ion-icon name="cart-outline" id="cart-icon"class="text-black right-0"></ion-icon>
+</div>
+<div class="total">
+  <div class="total-title">Total</div>
+  <div class="total-price" id="total-price">Rs 0</div>
+</div>
+{{!-- <div class="place"> --}}
+<a href="/payment">
+<button class="btn-buy"id="btn-buy" title="please fill your details">Place Order</button></a>
+{{!-- <button id="btn-buy-homepage">vieworders</button> --}}
+<div class="cart-message">Order must be above RS.500</div>
+<br>
+<div id="help">
+  <a href="" id="cancel">Cancel order</a>
+  <a href="" id="needhelp">Need Help?</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                           <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link" href="/">Home</a>
+              </li>
+            
+                  <div class="dropdown">
+                    <li class="nav-item dropdown">
+                        <a href="#"  class="nav-link btn  dropdown-toggle " type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Womens</a>
+                        <ul class="dropdown-menu  width=30px  bg-transparent border-0 "  aria-labelledby="dropdownMenuButton">
+                           <li class="dropdown-ṃenu dropdown-menu-center"><a href="/Kurti">Kurti</a></li> 
+                            <li class="dropdown-ṃenu dropdown-menu-center"><a href="">Sarees</a></li>
+                            <li class="dropdown-menu-center"><a href="">Tops</a></li>
+                            <li class="dropdown-menu-center"><a href="">Pants</a></li>
+                            <li class="dropdown-menu-center"><a href="">Tshirts</a></li>
+                        </ul>
+                    </li>
+                    </div>
+                    <div class="dropdown">
+                      <li class="nav-item dropdown">
+                        <a href="mens.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Mens</a>
+                        <ul class="dropdown-menu width-30px bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                          <li class="dropdown-menu-center"><a href="">Pants</a></li>
+                          <li class="dropdown-menu-center"><a href="">Shirts</a></li>
+                          <li class="dropdown-menu-center"><a href="">Trousers</a></li>
+                        </ul>
+                      </li>
+                      </div>
+
+
+              <div class="dropdown">
+            <li class="nav-item dropdown">
+             <a href="kids.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Kids</a>
+             <ul class="dropdown-menu width-30px bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                <li class="dropdown-menu-center"><a href="/gowns">Gowns</a></li>
+                <li class="dropdown-menu-center"><a href="">Pavadai</a></li>
+                <li class="dropdown-menu-center"><a href="">Night dress</a></li>
+                <!-- <li><a href=""></a></li> -->
+              </ul>
+            </li>
+            </div>
+
+ <div class="dropdown">
+              <li class="nav-item dropdown">
+               <a href="kids.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Fancy</a>
+               <ul class="dropdown-menu  bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                  <li class="dropdown-menu-center"><a href="">Hand bags</a></li>
+                  <li class="dropdown-menu-center"><a href="">Purses</a></li>
+      
+                  <!-- <li><a href=""></a></li> -->
+                </ul>
+              </li>
+              </div>
+          
+            </div>
+          </ul>
+      </div>
+  </nav>
+</header>
+</section>
+
+{{!-- kurties --}}
+
+<section class="kurti">
+ 
+<div class="container mb-5 mt-5 ">
+<h2 class="pb-3 position-relative d-inline-block text-black text-uppercase" id="h2">Kurties</h2>
+
+{{!-- 1ist row --}}
+<div class="row pr-20">
+  <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center"id="card" data-dress-id="1">
+  <img src="/images/kurti.png" class="card-img-top" id="card-img-top">
+  <div class="card-body" >
+    <h5 class="card-title text-center" id="card-title">Navy Blue Kurti</h5>
+     <p class="card-text text-center" id="card-text">Rs 1000</p>
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('1','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('1','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('1','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('1','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+        <li id="li"><i class="fa fa-star-half-o"></i></li>
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart"id="add-to-cart" id="card" data-dress-id="1">Add to Cart</a>
+</div>
+</div>
+  </div>
+{{!-- 2nd col --}}
+   <div class="col-lg-4 col-md-5 col-sm-6 col-12" >
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="2">
+  <img src="/images/kurti3.png" class="card-img-top kurti2" id="card-img-top">
+  {{!-- kurti2 --}}
+  <div class="card-body"  >
+    <h5 class="card-title text-center"id="card-title">White Print Kurti</h5>
+     <p class="card-text text-center"id="card-text">Rs 900</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('2','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('2','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('2','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('2','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+
+      <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart"id="add-to-cart" id="card" data-dress-id="2">Add to Cart</a>
+</div>
+</div>
+   </div>
+{{!-- 3rd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="3" >
+  <img src="/images/kurti2.png"id="card-img-top" class="card-img-top" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title text-center" id="card-title">Red Print Anarkali</h5>
+     <p class="card-text text-center" id="card-text">Rs 1200</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+      <div class="h6">size</div>
+              <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('3','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('3','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('3','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('3','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+      <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn  btn-bg  justify-content-center text-center mb-5 cursor add-to-cart"id="add-to-cart"id="card" data-dress-id="3">Add to Cart</a>
+</div>
+</div>
+     </div>
+</div>
+
+
+                      {{!-- 2nd row --}}
+ <div class="row">
+    <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="4">
+  <img src="/images/kurti3.png" class="card-img-top" id="card-img-top">
+  <div class="card-body" >
+    <h5 class="card-title text-center"id="card-title">White Brown Kurti</h5>
+     <p class="card-text text-center"id="card-text">Rs 1000</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('4','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('4','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('4','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('4','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+     <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="4">Add to Cart</a>
+</div>
+</div>
+    </div>
+{{!-- 2nd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center"  id="card" data-dress-id="5" >
+  <img src="/images/kurti4.png" class="card-img-top black" id="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title text-center"id="card-title">Black Print Kurti</h5>
+     <p class="card-text text-center" id="card-text">Rs 900</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('5','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('5','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('5','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('5','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+       <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="5">Add to Cart</a>
+</div>
+</div>
+     </div>
+{{!-- 3rd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center"id="card" data-dress-id="6" >
+  <img src="/images/kurti5.png" class="card-img-top"id="card-img-top" >
+  <div class="card-body" >
+    <h5 class="card-title text-center"id="card-title">Red Print Anarkali</h5>
+     <p class="card-text text-center"id="card-text">Rs 1200</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+      <div class="h6 ">size</div>
+               <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('6','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('6','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('6','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('6','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+       <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn  btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="6">Add to Cart</a>
+</div>
+</div>
+      </div>
+</div>
+
+
+ {{!-- 3rd row --}}
+<div class="row">
+    <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="7">
+  <img src="/images/kurti6.png" class="card-img-top" id="card-img-top">
+  <div class="card-body"  >
+    <h5 class="card-title text-center" id="card-title">Black Long Kurti</h5>
+     <p class="card-text text-center" id="card-text">Rs 4000</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+             <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('7','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('7','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('7','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('7','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+      <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="7">Add to Cart</a>
+</div>
+</div>
+   </div>
+{{!-- 2nd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" data-dress-id="8" id="card">
+  <img src="/images/kurti7.png" class="card-img-top" id="card-img-top">
+  <div class="card-body" >
+    <h5 class="card-title text-center"id="card-title">Pink Print Kurti</h5>
+     <p class="card-text text-center" id="cart-text">Rs 1500</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('8','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('8','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('8','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('8','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+      <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="8">Add to Cart</a>
+</div>
+</div>
+      </div>
+{{!-- 3rd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card"data-dress-id="9">
+  <img src="/images/kurti8.png" class="card-img-top gray" id="card-img-top" >
+  <div class="card-body">
+    <h5 class="card-title text-center"id="card-title">Gray Print Anarkali</h5>
+     <p class="card-text text-center"id="card-text">Rs 1200</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+      <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('9','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('9','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('9','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('9','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+        <li id="li"><i class="fa fa-star-half-o"></i></li>
+        </div>
+    
+    <a href="#" class="btn  btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="9">Add to Cart</a>
+</div>
+</div>
+      </div>
+</div>
+
+
+    {{!-- 4th row --}}
+ <div class="row">
+    <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="10" >
+  <img src="/images/kurti9.jpg" class="card-img-top black1" id="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title text-center" id="card-title">Sky Blue Kurti</h5>
+     <p class="card-text text-center"id="card-text">Rs 1000</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('10','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('10','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('10','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('10','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+       <li id="li"><i class="fa fa-star-half-o"></i></li>
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart"data-dress-id="10">Add to Cart</a>
+</div>
+</div>
+    </div>
+{{!-- 2nd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="11">
+  <img src="/images/kurti10.jpg " class="card-img-top img-fluid image" id="card-image-top">
+  <div class="card-body">
+    <h5 class="card-title text-center"id="card-title">White Print Kurti</h5>
+     <p class="card-text text-center"id="card-text">Rs 900</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+        <div class="h6">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('11','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('11','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('11','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('11','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center ">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+       <li id="li"><i class="fa fa-star-half-o"></i></li>
+         {{!-- <li id="li" class="li">3.1</li> --}}
+        </div>
+    
+    <a href="#" class="btn btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="11">Add to Cart</a>
+</div>
+</div>
+      </div>
+{{!-- 3rd col --}}
+      <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+    <div class="card mt-3 p-3 align-items-center" id="card" data-dress-id="12">
+  <img src="/images/kurti11.png" class="card-img-top image"id="card-image-top">
+  <div class="card-body"><h3>
+
+  </h3>
+    <h5 class="card-title text-center"id="card-title">Red Print Anarkali</h5>
+     <p class="card-text text-center"id="card-text">Rs 2200</p>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Size Options">
+      <div class="h6 ">size</div>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="L"  onclick="selectSize('12','L',event)">L</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="M"  onclick="selectSize('12','M',event)">M</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XL"  onclick="selectSize('12','XL',event)">XL</button>
+        <button type="button" class="btn btn-outline-dark size-btn" id="btn" data-size="XXL" onclick="selectSize('12','XXL',event)" >XXL</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <div id="ul" class="star mt-3 justify-content-center align-items-center">
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star checked"></i></li>
+        <li id="li"><i class="fa fa-star"></i></li>
+      <li id="li"><i class="fa fa-star-half-o"></i></li>
+        </div>
+    
+    <a href="#" button class="btn  btn-bg  justify-content-center text-center mb-5 cursor add-to-cart" id="add-to-cart" data-dress-id="12">Add to Cart</a>
+</div>
+</div>
+      </div>
+</div>
+ 
+</div>
+</section>
+
+{{!-- <script>
+let selectedSize = null;
+function selectSize(Title, size, event) {
+  // Remove the "active" class from all buttons
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+      button.classList.remove('active1');
+  });
+
+  // Add the "active" class to the selected button
+  const selectedButton = event.target;
+  selectedButton.classList.add('active');
+
+  // Save the selected size in a variable
+  selectedSize = size;
+
+  // Display the selected value in the console
+  console.log(`Selected Size: ${selectedSize}`);
+  let sizecontent = document.querySelector('.selected-size');
+  sizecontent.textContent = size;
+}
+</script> --}}
+<script src="/javascript/script.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+</body>
+</html>

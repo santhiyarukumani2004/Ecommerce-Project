@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+                                <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                                  <!-- iconicon -->
+
+                                  <!-- style css -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+   
+
+<style>
+   
+    .order-item div {
+      flex: 1;
+    }
+      @media (max-width:700px) and (min-width:200px){
+        #em{flex-wrap: wrap !important;
+        overflow-wrap:break-word !important;}
+      }
+         @media (max-width:389px){
+        #em{overflow-wrap:break-word !important;}
+      }
+        
+      
+        body{
+            overflow-x: hidden;
+        }
+        h1{text-align: center !important;padding: 10px;}
+        #details {
+            width:50%;
+            margin: auto !important;
+            border: 2px dotted darkgray;
+            padding: 15px;
+        }
+#details .h6{
+    padding-top:20px;
+    font-weight: 700;
+}
+
+img{
+    width:200px;
+}
+.dress-col{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    line-height: 2;
+    font-size: 1.5rem;
+    padding: 15px;
+}
+.dress-title{
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+.order-item-col{
+  display :flex;
+  flex-direction: column !important;
+  font-weight: bold;
+}
+
+.order-item {
+    height: auto; /* Ensure that the height adjusts based on content */
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction:row !important; /* Arrange items vertically within the order item */
+}
+.span{
+  font-size: 15px !important;
+  line-height: 3;
+  font-weight: bold;
+  white-space: wrap !important;
+}
+#img{
+  width:50px !important;
+}
+#span1{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.order-item-col{
+   display: flex;
+   flex-direction: row;
+}
+{{!-- #showDetailsButton{
+  height: 150px !important;
+  width: auto;
+  margin: auto;
+  padding: 20px 10px;
+  background-color: crimson;
+  color: white;
+  font-size: 14px;
+} --}}
+#span1{
+  line-height: 4;
+  white-space: wrap;
+}
+.hide{
+  display: none;
+}
+svg{
+  color: #000;
+  margin: 15px;
+}
+h5{
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+.btn{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.span{
+  font-weight: bold;
+  font-size: 12px;
+}
+.h55{
+  font-size: 14px;
+  font-weight: bold;
+  color: ;
+  padding: 12px;
+}
+.dress-items{
+  font-size: 12px;
+  text-align: right;
+}
+h4{
+  color:dimgray;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+</style>
+</head>
+<body>
+  {{!-- cart --}}
+<br>
+ <a href="/">
+  <i class="bi bi-arrow-left"></i>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+  </svg></a>
+<div class="cart-package">
+        <div class="cart-title">Cart Items</div>
+          <div class=" msg "><i class="fa-solid fa-triangle-exclamation"></i>Please Login To Fill your Details for Order</div>
+        <div class="message2">
+         <img src="/images/empty-cart.png" class="img-fluid" id="car"></ion-icon>
+          <p>Your Cart Is Empty!!</p>
+          </div>
+        <div class="message1">Item Removed Your Cart</div>
+        <div class=" message ">Product Already Exist In Cart</div>
+          
+            <br><br>
+        <div class="cart-content ">
+</div>
+ <div class="cart"  id="cart">
+  <div id="cart-count" class="cart-count">0</div>
+  <ion-icon name="cart-outline" id="cart-icon"class="text-black right-0"></ion-icon>
+</div>
+<div class="total">
+  <div class="total-title">Total</div>
+  <div class="total-price" id="total-price">Rs 0</div>
+</div>
+{{!-- <div class="place"> --}}
+<a href="/payment">
+<button class="btn-buy" id="btn-buy" title="please fill your details">Place Order</button></a>
+<div class="cart-message">Order must be above RS.500</div>
+<br>
+<div id="help">
+  <a href="" id="cancel">Cancel order</a>
+  <a href="" id="needhelp">Need Help?</a>
+</div>
+</div>
+</div>
+</div>
+</div>    
+ <h1 class="text-align-center">Delivery Details</h1>
+<div id="details">
+    <div class="h6">YOUR USER ID: {{users.ID}}</div> <!-- Use users.id, not users.ID -->
+    <div class="h6">YOUR NAME: {{users.USERNAME}}</div> <!-- Use users.username, not users.USERNAME -->
+    <div class="h6"title="if you not a address then add in delivery page ">YOUR DELIVERY ADDRESS: <span>{{secondTableData.address}},</span>
+   <span>{{secondTableData.state}},</span> <span>{{secondTableData.city}}- {{secondTableData.pincode}},</span> 
+   <span>{{secondTableData.landmark}},</span>  </div>
+    <div class="h6">YOUR MOBILE NO: {{users.mn}}</div>
+    <div class="h6"id="em">YOUR EMAIL: {{users.EMAIL}}</div> <!-- Use users.email, not users.EMAIL -->
+</div><br>
+<div class="container">
+  <h1 class="text-align-center">Your Orders</h1>
+  <h1>Your Order History</h1>
+  <div class="order-history">
+    <h3>Order History</h3>
+ <div class="order-list" id="order-list">
+  {{#each orders}}
+  <div class="order-item">
+    <div class="order-item-col">
+      <div class="span">
+        orderno: {{ this.order_no }}<br>
+        status: {{ this.status }}<br>
+        ordered date:
+        {{#with this.order_date}}
+          <div>{{toLocaleDateString}}</div>
+          <div>{{toLocaleTimeString}}</div>
+        {{/with}}
+      </div>
+      <!-- Add more order details here -->
+    </div>
+
+    <div class="order-item-col">
+      {{#each dressItems}}
+      <div class="dress-item">
+        <img src="{{this.dressImage}}" class="img" style="width: 90px; height: 70px;">
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="order-item-col">
+      <div id="span1">
+        {{#each dressItems}}
+        <div class="dress-item">
+          <h5 class="h55">{{this.dressName}}<br></h5>
+        </div>
+        {{/each}}
+        <h4>Delivery Expected By:<br><br>
+        {{#with this.delivery_date}}
+          {{toLocaleDateString}}
+        {{/with}}</h4>
+      </div>
+    </div>
+
+    <!-- More Buttons or Details -->
+    <div class="order-item-col">
+      <br><br><br>
+      <button type="button" class="btn btn-danger showDetailsButton">View Details</button>
+
+      <div class="hide"><br>
+        {{#each dressItems}}
+        <div class="dress-items">
+          <p>Quantity: {{this.Quantity}}</p>
+          <p>Dress ID: {{this.dressId}}</p>
+          <p>Price: {{this.Price}}</p>
+          <!-- Add more dress details here --> 
+        </div>
+        <br>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+    </div>
+  </div>
+
+
+          
+<script>
+// Assuming you have an array of orders with each order having an 'itemList' property
+orders.forEach(order => {
+    try {
+        order.itemList = JSON.parse(order.itemList);
+    } catch (error) {
+        console.error('Error parsing itemList:', error);
+        order.itemList = []; // Set it to an empty array or handle the error appropriately
+    }
+});
+console.log("Parsed itemList:", order[0].itemList); // Log the first order's itemList for testing
+console.log("Orders data:", order);
+
+</script>
+<script>
+  // Get the button element by its class
+const showDetailsButtons = document.querySelectorAll('.showDetailsButton');
+
+// Add a click event listener to each "View Details" button
+showDetailsButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        // Find the closest "hide" element within the same order item
+        const hideElement = this.closest('.order-item').querySelector('.hide');
+        
+        // Toggle the display of the "hide" element
+        if (hideElement) {
+            if (hideElement.style.display === 'none' || !hideElement.style.display) {
+                hideElement.style.display = 'block';
+            } else {
+                hideElement.style.display = 'none';
+            }
+        }
+    });
+});
+
+
+</script>
+
+
+
+
+
+{{!-- Suriyasam1234##
+suriyasam123@gmail.com --}}
+
+
+<!-- Include jsonwebtoken library using CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/8.5.1/jsonwebtoken.min.js"></script>
+<script src="/javascript/script.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+</html>

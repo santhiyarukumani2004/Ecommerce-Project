@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My profile</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+<style>
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+  }
+body{
+  width: 100%;
+  font-family: 'Belanosima', sans-serif;
+  /* background: #1e130c;  
+background: linear-gradient(to right, #9a8478, #1e130c);
+margin: auto; */
+background: #000022;
+}
+.container{
+  height:90vh;
+  width:25%;
+  background-color: white;
+  position: relative;
+  color: black;
+  /* z-index: 1; */
+}
+hr{
+  border: none;
+}
+@media screen and (max-width: 1200px) and (min-width: 150px){
+    body{
+        /* hide horizontal scrollbars */
+        overflow-x: hidden;
+        
+    }
+    .container{
+      width:50%;
+      }
+}
+.box{
+  width:100%;
+  height:40%;
+  position: fixed;
+  position: absolute;
+  left:0;
+  top:0;
+  border-radius:30% 70% 100% 0% / 0% 0% 100% 100%;
+  background: #FF0099;
+  background-image: linear-gradient(45deg,#3023AE 0%,#FF0099 100%);
+  border-radius:0% 100% 100% 0% / 0% 0% 100% 100% 
+}
+ svg{
+  position: absolute;
+  z-index: 2;
+  top:7%;
+  left:10%;
+ }  
+ .h2{
+  /* z-index: 3; */
+  text-align: center;
+  position: absolute;
+  letter-spacing: 1px;
+  color: beige;
+  text-transform: uppercase;
+  top:20%;
+   left: 50%;
+   font-size: 33px;
+ } 
+ #profile{
+  position: relative;
+  top:38%;
+  padding: 7px;
+ }
+ .h5{
+  padding-top: 7px;
+  font-weight: bold;
+ }
+ .h6{
+  margin-left: 7px;
+  padding: 2px;
+  border-bottom: 2px solid gray;
+  width: 90%;
+  font-size: 13px;
+ }
+ .bi{
+  color:beige;
+ } 
+</style>
+</head>
+<body>
+  <hr>
+  <a href="/">
+  <i class="bi bi-arrow-left"></i>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+  </svg></a>
+  <div class="container">
+  <div class="box">
+  <i class="bi bi-person-circle"></i>
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+  </svg><div class="h2">Profile</div>
+  </div>
+  <div id="profile">
+    <div class="h5">Username</div>
+    <div class="h6">{{users.USERNAME}}</div>
+    <div class="h5">Address</div>
+    <div class="h6"> {{users.ADDRESS}}</div>
+    <div class="h5">Mobile No</div>
+    <div class="h6">{{users.mn}} </div>
+    <div class="h5">Email</div>
+    <div class="h6">{{users.EMAIL}}</div>
+    <!-- <div class="h5">Orders</div>
+    <div class="h6">hi</div> -->
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

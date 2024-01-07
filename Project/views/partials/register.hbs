@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">  
+       
+       <style>
+        body {
+  display: flex; 
+justify-content: center;
+  align-items: center;
+  
+  /* padding-bottom: 2px; */
+  font-family: 'Libre Baskerville', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+hr{
+    border: 0;
+}
+.rainbow {
+  position: relative;
+  z-index: 0;
+  width:400px;
+    /* margin:7vh auto 0 auto; */
+    margin: auto;
+    padding:0;
+
+    
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: black !important;
+} 
+
+ .rainbow::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+    animation: rotate 4s linear infinite;
+  }
+  
+  .rainbow::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: white;
+    border-radius: 5px;
+  }
+  /* .alert{
+    margin: auto;
+  } */
+  #username,#email,#password,#address,#mn,#cpassword
+  {  color: black;
+    font-weight: bold;
+    font-size: 12px;
+    padding-top: 5px;
+    /* padding-left: 5px; */
+    }
+ /* .container{
+    margin: auto;
+ }*/
+ .h4{
+    text-align: center;
+    font-family: 'Merriweather', serif;
+     color: black;
+ }   
+.input-group{
+   margin:2px;
+    /* text-align: center; */
+    flex-direction: column;
+}
+.input-group label{
+  color: rgba(0,0,0,0.5);  
+  font-size: 14px;
+}
+.input-group input{
+   width: 23em;
+   border: none;
+   border-bottom: 3px solid gray;
+   padding: 2px;
+   
+} 
+.d-grid{
+    margin:8px;
+}
+.input-group input:focus{
+   outline: 0;
+}
+.input-group .error{
+    color:rgba(255, 0, 0,0.6);
+    font-size: 8px;
+    margin-top: 1px;
+}
+.input-group.success input{
+    border-color: rgba(12, 197, 119,0.7);
+}
+.input-group.error input{
+    border-color: rgba(255,0,0.3);
+}
+.already{
+    color: gray;
+    font-size: 12px;
+}
+.already a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  
+}
+.h4
+{font-size: medium;
+font-weight: bolder;
+letter-spacing: 1px;}
+
+.error1{
+ color: crimson;
+  text-align:center;
+  padding: 5px;
+}
+.success1{
+  color: green;
+  text-align:center;
+  padding: 5px;
+}
+.alert{
+ font-weight: bolder;
+  font-size: 10px;
+  word-spacing: 1.5px;
+  text-align: center;
+}
+ </style>
+</head>
+<body>
+    
+    <div class="container">
+     <hr>
+        <div class="rainbow align-items-center">
+            {{!-- create  new routes in routes folder for data stores --}}
+       
+            <form action="/auth/register"  method="post" id="form">
+                <div class="h4">Register</div>
+    
+               {{#if msg}}
+            <p  class="{{msg_type}}">{{msg}}</p>
+              {{/if}}
+             <div class="input-group">
+                  <label for ="username">Username</label>
+                  <input type="text" name="username" id="username" >
+                   <div class="error" >
+                 {{!-- {{#if errors}}
+            {{#each errors}}
+                {{#if this.field "username"}}
+                    {{this.message}}<br>
+                {{/if}}
+            {{/each}}
+        {{/if}} --}}
+                   </div>
+             </div>
+    
+             <div class="input-group">
+                 <label for ="email">Email</label>
+                 <input type="text" name="email" id="email" >
+                  <div class="error">
+                   
+                  </div>
+            </div>
+            <div class="input-group">
+                <label for ="address">Address</label>
+                <input type="address" name="address" id="address">
+                 <div class="error"></div>
+           </div>
+           <div class="input-group">
+            <label for ="mn">Mobile no</label>
+            <input type="mn" name="mn" id="mn">
+             <div class="error"></div>
+            </div>
+            <div class="input-group">
+                  <label for ="password">Password</label>
+                  <input type="password" name="password" id="password" >
+                  <ion-icon name="eye-outline"></ion-icon>
+                  <ion-icon name="eye-off-outline"></ion-icon>
+                   <div class="error"></div>
+            </div>
+            <div class="input-group">
+                 <label for ="cpassword">Confirm Password</label>
+                 <input type="password" name="cpassword" id="cpassword">
+                 <ion-icon name="eye-outline"></ion-icon>
+                 <ion-icon name="eye-off-outline"></ion-icon>
+                  <div class="error"></div>
+            </div>
+            <div class="d-grid gap-2 ">
+            <input  type="submit" class="btn bg-dark btn-lg text-light">
+        
+            </div>
+            <div class="already">
+                Already a member? &nbsp; &nbsp; <a href="/#login">Login now</a>
+            </div>
+            
+    
+         </form>
+    </div>
+  
+    </div>
+  
+<script>
+const form = document.querySelector('#form');
+const username = document.querySelector('#username');
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const cpassword = document.querySelector('#cpassword');
+const address  = document.querySelector('#address');
+const mn = document.querySelector('#mn');
+document.addEventListener('DOMContentLoaded', function () {
+form.addEventListener('submit',()=>{
+   e.preventDefault();
+   const interval = 5000; // 5000 milliseconds = 5 seconds
+
+// Use setInterval to periodically call the validateInputs function
+const intervalId = setInterval(validateInputs, interval);
+
+  console.log('Form submitted');
+  // You can call validateInputs here if needed, or it will be called periodically
+});
+   validateInputs();
+});
+
+function validateInputs(){
+   const userval =  username.value.trim();
+   const emailval = email.value.trim();
+   const passval =  password.value.trim();
+   const cpassval =  cpassword.value.trim();
+   const addressval = address.value.trim();
+   const mnval = mn.value.trim();   
+
+   //username
+   if (userval === '') {setError(username,'*Username is required')} 
+   else if(!validateName(userval)){setError(username,'Username is incorrect')}
+   else { setSuccess(userval);}
+
+//email
+   if(emailval === ''){setError(email,'*Email is required');}
+   else if (!validateEmail(emailval)){setError(email,'Email is incorrect');}
+   else {setSuccess(emailval);}
+
+//password
+   if(passval === ''){setError(password,'*Password is required');}
+   else if(!validatePassword(passval)) {setError(password,'Password is incorrect');}
+   else { setSuccess(passwordval);}
+
+ //cpassword
+   if(cpassval === ''){setError(cpassword,'*Confirm Password is required');}
+   else if(cpassval !== passval)  {setError(cpassword,'Confirm Password is incorrect');}
+   else{setSuccess(cpassval);}
+
+   //address
+   if(addressval === ''){setError(address,'*Address  is required');}
+  //  else if(!validateAddress(addressval) ){setError(address,'Address')}
+  else{setSuccess(addressval);}
+
+  //phone no
+  if(mnval === ''){ setError(mn,'*Mobile no is required');}
+  else{setSuccess(mnval);}
+
+}
+
+//step 3[setsuccess]
+function setSuccess(element){
+    const inputgroup = element.parentElement;
+    const errorelement = inputgroup.querySelector('.error');
+    errorelement.innerText = '';
+    inputgroup.classList.add('success');
+    inputgroup.classList.remove('error');
+}
+
+//step 4[seterror]
+function setError(element,message){
+   const inputgroup = element.parentElement;
+   const errorelement = inputgroup.querySelector('.error');
+   errorelement.innerText = message;
+   inputgroup.classList.add('error');
+   inputgroup.classList.remove('success');
+   
+}
+
+//step 5
+const validateName = (username)=>
+{
+   return String(username).match( (/^[A-Za-z]+$/) );
+};
+const validateEmail = (email)=>
+{
+   return String(email).toLowerCase().match((/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/));
+};
+const validatePassword  = (password)=>
+{
+    return String(password).match(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/);
+};
+
+</script>
+<script src="/javascript/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+</html>

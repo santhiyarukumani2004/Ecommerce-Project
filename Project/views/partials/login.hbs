@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabulous Boutique</title>
+                                <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                                  <!-- iconicon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                                  <!-- style css -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+                                <!-- responsive -->
+   {{!-- <link rel="stylesheet" href="responsive.css">                            --}}
+   <style>
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip {
+   display: none;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip {
+    display: flex;
+    opacity: 1;
+}
+
+
+</style>
+</head>
+
+<body id="body">
+  <!-- Custom Alert Box -->
+    <div id="custom-alert" class="custom-alert">
+        <div class="custom-alert-content">
+            <span id="custom-alert-message"></span>
+            <button id="custom-alert-close">Close</button>
+        </div>
+    </div>
+  <!-- naigation section -->
+
+ <section>
+    <header>
+  <nav class="navbar navbar-expand-lg navbar-light navbar-bg mt-lg-0 mt-md-0 fixed-top">
+      <!-- Navbar Toggler Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Logo in the Center -->
+
+       <a class="navbar-brand" href="#" id="logo">
+        <img src="images/ddd.png" width="30" height="30" alt="boutique" loading="lazy"class="d-inline-block align-top img-fluid text-light" >
+        <h5 class="italic">Fabulous Boutique</h5></a>
+      
+      
+  
+      <!-- Contact and Cart Icons (Fixed) -->
+      
+        <div id="icons" class="fixed-icons position-fixed right-0" class="tooltip" title="click to view account" >
+          <ion-icon name="person-circle-outline" id="mycontact" ></ion-icon>
+          <div id="account-options">
+           <ul>
+             <li><a href="/profile">Account</a></li>
+             <li><a href="/orders">Orders</a></li>
+             <li><a href="/logout">Logout</a></li>
+             <li><a href="/index">Report</a></li>
+           </ul>
+         </div>
+         
+         <div class="cart">
+           <div id="cart-count">0</div>
+          <ion-icon name="cart-outline" id="cart-icon"></ion-icon>
+          </div>
+        </div>
+       
+    {{!-- cart --}}
+<div class="cart-package">
+        <div class="cart-title">Cart Items</div>
+          {{!-- <div class=" msg "><i class="fa-solid fa-triangle-exclamation"></i>Please Login To Fill your Details for Order</div> --}}
+        <div class="message2">
+         <img src="/images/empty-cart.png" class="img-fluid" id="car"></ion-icon>
+          <p>Your Cart Is Empty!!</p>
+          </div>
+        <div class="message1">Item Removed Your Cart</div>
+        <div class=" message ">Product Already Exist In Cart</div>
+          
+            <br><br>
+        <div class="cart-content ">
+       
+
+{{!-- 
+          <div class="cart-box">
+               <div class="image-column">
+               <img src="/images/kurti.png" alt="" class="cart-img">
+                </div>
+                <div class="detail-column">
+                <div class="cart-dress-title">Navy Blue kurti</div>
+               <div class="price-box">
+                  <div class="cart-price">Rs.1000</div>
+                   <div class="cart-amt">Rs.1000</div>
+               </div>
+              </div>
+            <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+              <div class="trash-column">
+                 <ion-icon name="trash" class="cart-remove"></ion-icon>
+              </div>
+          </div>
+          
+         <div class="cart-box">
+  <div class="image-column">
+    <img src="/images/girl.jpg" alt="" class="cart-img">
+  </div>
+  <div class="detail-column">
+    <div class="cart-dress-title">Blue with orange shade gown</div>
+    <div class="price-box">
+      <div class="cart-price">Rs.1000</div>
+      <div class="cart-amt">Rs.1000</div>
+    </div>
+  </div>
+  <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+
+  <div class="trash-column">
+    <ion-icon name="trash" class="cart-remove"></ion-icon>
+  </div>
+          </div> --}}
+</div>
+ <div class="cart"  id="cart">
+  <div id="cart-count" class="cart-count">0</div>
+  <ion-icon name="cart-outline" id="cart-icon"class="text-black right-0"></ion-icon>
+</div>
+<div class="total">
+  <div class="total-title">Total</div>
+  <div class="total-price" id="total-price">Rs 0</div>
+</div>
+{{!-- <div class="place"> --}}
+<a href="/payment">
+<button class="btn-buy"id="btn-buy" title="please fill your details">Place Order</button></a>
+{{!-- <button id="btn-buy-homepage">vieworders</button> --}}
+<div class="cart-message">Order must be above RS.500</div>
+<br>
+<div id="help">
+  <a href="" id="cancel">Cancel order</a>
+  <a href="" id="needhelp">Need Help?</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                           <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#">Home</a>
+              </li>
+            
+                  <div class="dropdown">
+                    <li class="nav-item dropdown">
+                        <a href="#"  class="nav-link btn  dropdown-toggle " type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Womens</a>
+                        <ul class="dropdown-menu  width=30px  bg-transparent border-0 "  aria-labelledby="dropdownMenuButton">
+                           <li class="dropdown-ṃenu dropdown-menu-center"><a href="/Kurti">Kurti</a></li> 
+                            <li class="dropdown-ṃenu dropdown-menu-center"><a href="">Sarees</a></li>
+                            <li class="dropdown-menu-center"><a href="">Tops</a></li>
+                            <li class="dropdown-menu-center"><a href="">Pants</a></li>
+                            <li class="dropdown-menu-center"><a href="">Tshirts</a></li>
+                        </ul>
+                    </li>
+                    </div>
+                    <div class="dropdown">
+                      <li class="nav-item dropdown">
+                        <a href="mens.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Mens</a>
+                        <ul class="dropdown-menu width-30px bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                          <li class="dropdown-menu-center"><a href="">Pants</a></li>
+                          <li class="dropdown-menu-center"><a href="">Shirts</a></li>
+                          <li class="dropdown-menu-center"><a href="">Trousers</a></li>
+                        </ul>
+                      </li>
+                      </div>
+
+
+              <div class="dropdown">
+            <li class="nav-item dropdown">
+             <a href="kids.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Kids</a>
+             <ul class="dropdown-menu width-30px bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                <li class="dropdown-menu-center"><a href="/gowns">Gowns</a></li>
+                <li class="dropdown-menu-center"><a href="">Pavadi</a></li>
+                <li class="dropdown-menu-center"><a href="">Night dress</a></li>
+                <!-- <li><a href=""></a></li> -->
+              </ul>
+            </li>
+            </div>
+
+ <div class="dropdown">
+              <li class="nav-item dropdown">
+               <a href="kids.html"  class="nav-link btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Fancy</a>
+               <ul class="dropdown-menu  bg-transparent border-0" aria-labelledby="dropdownMenuButton">
+                  <li class="dropdown-menu-center"><a href="">Hand bags</a></li>
+                  <li class="dropdown-menu-center"><a href="">Purses</a></li>
+      
+                  <!-- <li><a href=""></a></li> -->
+                </ul>
+              </li>
+              </div>
+          
+            </div>
+          </ul>
+      </div>
+  </nav>
+</header>
+</section>
+  <!-- home section -->
+<hr><hr> <hr><hr><hr><hr><hr>
+<section id="home" class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators ">
+        <li class="bg-danger" data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li class="bg-danger"data-target="#myCarousel" data-slide-to="1"></li>
+        <li class="bg-danger"data-target="#myCarousel" data-slide-to="2"></li>
+        <li class="bg-danger"data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="home-banner home-banner-1">
+            <div class="home-banner-text">
+              <br>
+              <h1 class=" text-center">E-Shop</h1>
+              <h2>Welcome to Every Happy Purchase</h2>
+              <a href="/#offer" class="btn  text-uppercase mt-4" id="new">Our Products</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="home-banner home-banner-2">
+            <div class="home-banner-text">
+              <br>
+              <h1>Women</h1>
+              <h2>50% Discount for every season</h2>
+              <a href="/#products" class="btn  text-uppercase mt-4" id="new">Collections</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="home-banner home-banner-3 ">
+            <div class="home-banner-text">
+              <br>
+              <h1>Men</h1>
+              <h2>30% Disount for Your Choice</h2>
+              <a href="/#contact1" class="btn  text-uppercase mt-4" id="new">About Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="home-banner home-banner-4">
+            <div class="home-banner-text">
+              <br>
+              <h1>Kids</h1>
+              <h2>20% Discount for Every day</h2>
+              <a href="/#login" class="btn  text-uppercase mt-4"id="new">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon">
+          <span class="ti-angle-left-slider-icon text-danger"></span>
+        </span>
+        </a>
+      <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+        <span class="carousel-control-next-icon">
+          <span class="ti-angle-left-slider-icon  text-danger"></span>
+
+        </span>
+      </a>
+  </div>
+  </section>
+
+     <!-- offer section -->
+<section id="offer">
+<div class="offers">
+  <div class="container">
+    <div class="row ">
+<div class=".col-sm-6 col-lg-3 mb-lg-0 mb-4 d-flex flex-column justify-content-between ">
+    <hr><hr>
+    <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0" >
+      <div class="offer-inner"id="card" data-dress-id="13">
+        <div class="offer-image position-relative overflow-hidden">
+         <div class="tooltip-container">
+            <img src="/images/girl.jpg" id="card-img-top" class="img-fluid girl">
+           <span class="tooltiptext">Size:XL</span>
+
+          </div>
+        <div class="offer-info text-decoration-none">
+          <p class="heading-bigger text-capitalize text-dark" >Sale 30%</p>
+          <div id="card-title">Blue with orange shade short gown</div>
+          <span  class="text-success"><del class="text-info bold" id="card-text">Rs 1000</del>&nbsp; &nbsp;Rs 500</span>
+          <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p>
+          <button type="button" class="btn btn-outline-danger text-uppercase mt-4 add-to-cart" id="add-to-cart" data-dress-id="13" >Shop Now</button>
+        </div></div>
+      </div>
+    </div>
+ </div>
+
+ <div class=".col-sm-6 col-lg-5 mb-lg-0 mb-4 d-flex flex-column justify-content-between ">
+
+    <hr><hr><hr>
+    <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
+      <div class="offer-inner text-decoration-none border-none" id="card" data-dress-id="14">
+        <div class="offer-image position-relative overflow-hidden">
+          <img src="/images/girl1.jpg" alt="" srcset="" class="img-fluid girl2" id="card-img-top">
+          {{!-- <div class="offer-overlay"></div>
+        </div> 
+        <div class="offer-info"> --}}
+          <div class="offer-info-inner"><hr>
+            <p class="heading-bigger text-capitalize text-dark  ">Sale 50%</p>
+             <div id="card-title">White with multi shade short gown</div>
+          <span  class="text-success"><del class="text-info bold" id="card-text">Rs 700</del>&nbsp; &nbsp;Rs 200</span>
+            <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p><br>
+            <button type="button" class="btn btn-outline-danger text-uppercase mt-1 add-to-cart" id="add-to-cart" data-dress-id="14">Shop Now</button>
+          </div></div>
+  
+      </div>
+    </div>
+     </div>
+
+ <div class=".col-sm-6 col-lg-3 mb-lg-0 mb-4 d-flex flex-column justify-content-between">
+    <hr><hr><hr>
+    <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
+      <div class="offer-inner text-decoration-none border-none">
+        <div class="offer-image position-relative overflow-hidden" id="card"data-dress-id="15">
+          <img src="/images/girl2.png" alt="" srcset="" class="img-fluid girl3" id="card-img-top">
+          {{!-- <div class="offer-overlay"></div>
+        </div>
+        <div class="offer-info"> --}}
+          <div class="offer-info-inner">
+            <p class="heading-bigger text-capitalize text-dark ">Sale 20%</p>
+             <div id="card-title">Green and Red shade with coat short gown</div>
+          <span  class="text-success"><del class="text-info bold" id="card-text">Rs 800</del>&nbsp; &nbsp;Rs 400</span>
+            <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p>
+            <button type="button" class="btn btn-outline-danger text-uppercase mt-4 add-to-cart" id="add-to-cart"data-dress-id="15">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<!-- 2nd row -->
+<div class="row ">
+  <div class=".col-sm-6 col-lg-3 mb-lg-0 mb-4 d-flex flex-column justify-content-between ">
+ 
+     <hr>
+     <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
+       <div class="offer-inner">
+         <div class="offer-image position-relative overflow-hidden"id="card" data-dress-id="16">
+           <img src="/images/men.png" alt="" srcset="" class="img-fluid girl" height="140px" id="card-img-top">
+           {{!-- <div class="offer-overlay"></div>
+         </div> --}}
+         <div class="offer-info text-decoration-none">
+           <p class="heading-bigger text-capitalize text-dark font-weight-bold">Sale 40%</p>
+            <div id="card-title">Jeans Shirt and Tshirts with black Pant</div>
+          <span class="text-success"><del class="text-info bold"  id="card-text">Rs 1500</del>&nbsp; &nbsp;Rs 900</span>
+           <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p>
+           <button type="button" class="btn btn-outline-danger text-uppercase mt-4 add-to-cart" id="add-to-cart"data-dress-id="16">Shop Now</button>
+         </div>
+       </div>
+     </div>
+     </div>
+  </div>
+  
+  <div class=".col-sm-6 col-lg-5 mb-lg-0 mb-4 d-flex flex-column justify-content-between ">
+     <hr><hr>
+     <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
+       <div class="offer-inner text-decoration-none border-none" >
+         <div class="offer-image position-relative overflow-hidden" id="card" data-dress-id="17">
+           <img src="/images/handbag.jpg" alt="" srcset="" class="img-fluid girl2" id="card-img-top">
+           {{!-- <div class="offer-overlay"></div>
+         </div>
+         <div class="offer-info"> --}}
+           <div class="offer-info-inner">
+             <p class="heading-bigger text-capitalize text-dark ">Sale 10%</p>
+              <div id="card-title">Beautiful Merun Leather Hand Bag</div>
+          <span  class="text-success"><del class="text-info bold" id="card-text">Rs 400</del>&nbsp; &nbsp;Rs 200</span><hr>
+             <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p><br>
+             <button type="button" class="btn btn-outline-danger text-uppercase mt-1 add-to-cart" id="add-to-cart" data-dress-id="17">Shop Now</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+  </div>
+ 
+  <div class=".col-sm-6 col-lg-3 mb-lg-0 mb-4 d-flex flex-column justify-content-between"><hr><hr>
+     <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
+       <div class="offer-inner text-decoration-none border-none">
+         <div class="offer-image position-relative overflow-hidden"id="card" data-dress-id="18">
+           <img src="/images/slipper.png" alt="" srcset="" class="img-fluid girl3"id="card-img-top">
+           {{!-- <div class="offer-overlay"></div>
+         </div>
+         <div class="offer-info"> --}}
+           <div class="offer-info-inner">
+             <p class="heading-bigger text-capitalize text-dark ">Sale 60%</p>
+              <div id="card-title">Beautiful Sandal Shoe Model Slipper</div>
+          <del class="text-info bold">Rs 900</del> &nbsp; &nbsp;<span id="card-text" class="text-success">Rs 300</span>
+             <p class="offer-title-1 text-uppercase font-weight-bold text-dark">Don't Miss This Chance</p>
+             <button type="button" class="btn btn-outline-danger text-uppercase mt-3 add-to-cart" id="add-to-cart" data-dress-id="18">Shop Now</button>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+ 
+ </div>
+
+</div>
+</div>
+</section>
+
+<!-- Products section -->
+<section id="products" class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="headline text-center mb-5">
+          <h2 class="pb-3 position-relative d-inline-block">FEATURED PRODUCTS</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-sm-6 col-lg-4">
+       <a href="#" class="d-block text-center mb-4">
+         <div class="product-list" id="card" data-dress-id="19" >
+           <div class="product-image position-relative"> 
+               <span class="sale">Sale</span>
+               <img decoding="async" src="/images/young.jpg" alt="products" class="img-fluid product-image-first" id="card-img-top">
+               <img decoding="async" src="/images/women.jpg" alt="products" class="img-fluid product-image-secondary" id="card-img-top"> 
+           </div>
+           <div class="product-name pt-3">
+             <h3 class="text-capitalize" id="card-title">Winter short multi color gown</h3>
+<div class="p">
+<del class="text-dark ">Rs 580.00</del>
+<p class="mb-0 amount text-secondary font-weight-bold"  id="card-text">Rs 300.00</p> 
+</div>
+             <button type="button" class="add_to_Card  add-to-cart" id="add-to-cart" data-dress-id="19">ADD TO CART</button>
+           </div>
+         </div>
+       </a> 
+     </div>
+  
+     <div class="col-sm-6 col-lg-4">
+       <a href="#" class="d-block text-center mb-4">
+         <div class="product-list" id="card" data-dress-id="20">
+           <div class="product-image position-relative">  
+               <img decoding="async" src="/images/young1.jpg" alt="products" class="img-fluid product-image-first" id="card-img-top">
+               <img decoding="async" src="/images/young3.jpg" alt="products" class="img-fluid product-image-secondary" id="card-img-top"> 
+           </div>
+           <div class="product-name pt-3 ">
+             <h3 class="text-capitalize"id="card-title">women beautiful shorts</h3>
+            <p class="mb-0 amount text-secondary font-weight-bold"  id="card-text">Rs 400.00</p> <hr>
+             <button type="button" class="add_to_Card mt-2 add-to-cart" id="add-to-cart" data-dress-id="20">ADD TO CART</button>
+           </div>
+         </div>
+       </a> 
+     </div>
+  
+     <div class="col-sm-6 col-lg-4">
+       <a href="#" class="d-block text-center mb-4">
+
+         <div class="product-list" id="card" data-dress-id="21">
+           <div class="product-image position-relative">
+               <img decoding="async" src="/images/special.png" alt="products" class="img-fluid product-image-first men1"id="card-img-top">
+             <img decoding="async" src="/images/special1.png" alt="products" class="img-fluid product-image-secondary men2" id="card-img-top"> 
+           </div>
+           <div class="product-name pt-3"><br><br><br>
+             <h3 class="text-capitalize" id="card-title">Men fancy dress</h3>
+             <p class="mb-0 amount text-secondary font-weight-bold" id="card-text">Rs 600.00</p>
+            
+             <button type="button" class="add_to_Card mt-4 add-to-cart" id="add-to-cart" data-dress-id="21">ADD TO CART</button>
+           </div>
+         </div>
+       </a> 
+     </div>
+     </div><hr>
+     <div class="row">
+     <div class="col-sm-6 col-lg-5">
+       <a href="#" class="d-block text-center mb-3">
+         <div class="product-list" id="card" data-dress-id="22">
+           <div class="product-image position-relative">  
+               <img decoding="async" src="/images/image2.png" alt="products" class="img-fluid product-image-first slip1" id="card-img-top">
+               <img decoding="async" src="/images/images1 (1).png" alt="products" class="img-fluid product-image-secondary slip2" id="card-img-top"> 
+           </div>
+           <div class="product-name pt-3"><hr><hr><hr>
+             <h3 class="text-capitalize" id="card-title">Elegant Formal kids wear</h3>
+             <p class="mb-0 amount text-secondary font-weight-bold"id="card-text">Rs 250.00</p>
+             
+             <button type="button" class="add_to_Card add-to-cart" id="add-to-cart" data-dress-id="22">ADD TO CART</button>
+           </div>
+         </div>
+       </a> 
+      </div>
+      <div class="col-sm-6 col-lg-6 overflow-visible">
+        <a href="#" class="d-block text-center mb-3">
+          <div class="product-list" id="card" data-dress-id="23">
+            <div class="product-image position-relative">  
+                <img decoding="async" src="/images/slip2.jpg" alt="products" class="img-fluid product-image-first slip1"id="card-img-top" >
+                <img decoding="async" src="/images/slip1.jpg" alt="products" class="img-fluid product-image-secondary slip2" id="card-img-top"> 
+            </div>
+            <div class="product-name pt-3"><hr><hr>
+              <h3 class="text-capitalize"id="card-title">Elegant Formal Slippers</h3>
+              <p class="mb-0 amount text-secondary font-weight-bold"id="card-text">Rs 400.00</p>
+             
+              <button type="button" class="add_to_Card add-to-cart" id="add-to-cart" data-dress-id="23">ADD TO CART</button>
+            </div>
+          </div>
+        </a> 
+       </div>
+    </div>
+
+
+
+   <!-- UP to 75% Off -->
+   <div class="overflow-hidden my-5">
+     <div class="row m-auto">
+       <div class="col-sm-12  up_to_off">
+         <img decoding="async" src="/images/discount1.jpg" alt="offers" class="img-fluid w-100"> 
+         <div class="up_to_content">
+           <h2 class="text-center">UP TO 70% OFFER EVERY WEAK!
+            <hr><hr><hr><hr><hr><hr><hr>
+           
+           </h2>
+           <div class="btn text-light"id="add">Lucky Saturday</div>
+          </div>
+       </div>
+     </div>
+   </div>
+  </div>
+</section>
+
+<!-- special  -->
+<section id="special" class="special"  id="card" data-dress-id="24">
+  <div class="container">
+    <div class="row">
+     
+      <div class="col-sm-12">
+        <div class="headline text-center mb-5">
+          <h2 class="pb-3 position-relative d-inline-block">SUMMER SALE</h2>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-7 text-center text-lg-start">
+        <div class="countdown-container" id="card" data-dress-id="24">
+          <h2 class="text-uppercase" id="card-title">Black Women Wedding Floral Design</h2>
+          <p class="my-4">This is a Wedding Bridal Dress for wearing the actress in film, dress is making own handlooms for particularly for bridal and also it color black with small  diamond color glittering.Don't Miss this chance.so ready to buy....... </p>
+          <ul class="list-unstyled countdown-counter">
+            <li><span class="fs-1 d-block" id="days">00</span> Days</li>
+            <li><span class="fs-1 d-block" id="hours">00</span> Hr</li>
+            <li><span class="fs-1 d-block" id="min">00</span> Min</li>
+            <li><span class="fs-1 d-block" id="sec">00</span> Sec</li>
+          </ul>
+<del class="font-weight-bold font-size-40px text-danger">Rs.10000.00</del> 
+  <p class="mb-0 amount text-success font-weight-bold"id="card-text">Rs 3000</p>
+          <button type="button" class="btn btn-danger add-to-cart" id="add-to-cart" data-dress-id="24">ADD TO CART</button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-5" data-dress-id="24">
+        <div class="special-img position-relative">
+          <span class="">Sale</span>
+    <img src="/images/blacky.png" alt="products" class="img-fluid" id="card-img-top"> 
+  {{!-- <img decoding="async" src="/images/blacky.png"  id="card-img-top"class="img-fluid"data-dress-id="24" > --}}
+        </div>
+      </div>
+     
+</div>
+</div>
+</section>
+
+
+   <!-- Contact section -->
+
+<section id="contact">
+    <div  class="contact">
+      <div class="container"id="contact1" >
+        <div class="headline text-center text-dark mb-5">
+          <h2 class="pb-3 position-relative d-inline-block text-dark">ABOUT ME</h2>
+        </div>
+        <div class="mb-5 text-center" >
+            <h5 class="text-dark">Let’s Start a Conversation!</h5>
+            <hr><hr><h2 class="fw-bold">Contact Us</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 text-dark">
+              <h4 class="fw-bold">Contact Info</h4>
+              <ul class="info list-unstyled">
+                <li class="d-flex align-items-center"> 
+                    <span class="pe-3 ti-location-pin fs-5"></span>
+                    <p><a href="">40,West Car Street- Bangalore.</a></p>
+                </li>
+                <li class="d-flex align-items-center">
+                    <span class="pe-3 ti-mobile fs-5"></span>
+                    <p><a href="">+91 999-999-9999</a></p>
+                </li>
+                <li class="d-flex align-items-center">
+                    <span class="pe-3 ti-envelope fs-5"></span>
+                    <p><a href="">Arunaboutique@shop.in</a></p>
+                </li> 
+              </ul>
+          </div>
+          <div class="col-lg-7 col-md-7 pt-lg-0 pt-md-0 pt-4 "id="above">
+            <h4 class="fw-bold text-dark">ABOUT-US</h4>
+                     <!-- <div class="col-lg-2 col-md-3 col-sm-5 col-6 flex-direction-row "> -->
+                      <div class="about flex-row"> 
+                        <hr>
+                      <img src="/images/newhang.jpg" class="img-fluid"  alt=""id="hanger" >
+                      <p class="text-dark"id="content">Aruna Boutique is one of the Natural Collection of dresses
+                        .We are making as own Handlooms.We have Particular Collection.If you want to 
+                        Wear any color combination dress.Please contact me.We are ready to make quality dress.
+                        Please support me.</p>
+                        <!-- <h1><button>100% COTTON</button></h1> -->
+                    </div>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+</section>
+
+  <!-- login -->
+<section id="" class="h-100">
+    <div class="container justify-content-center align-items-center h-100">
+    <div id="login">
+    <form action="/auth/login" method="post">
+            <h2 class="">Sign in</h2>
+              {{#if msg}}
+                <p  class="{{msg_type}}">{{msg}}</p>
+                  {{/if}}
+    <div class="inputbox">
+       <input type="text" name="email" required="required" id="em"title="please fill this field">
+       <span>Email</span>
+       <i></i>
+    </div>
+    <div class="inputbox">
+      <input type="password" name="password"id="pass" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+       required>
+      <span>Password</span>
+      <i></i>
+    </div>
+    <div class="links">
+    <a href="/ResetPassword">Forget password</a>
+    <br>
+    </div>
+    <div class="h6" id="not">Not a member? &nbsp;
+    <a href="/register">Signup Now</a>
+    </div>
+    <hr><hr><hr>
+    <div class="d-grid gap-2">
+      <button type="submit" type="button" class="btn btn-outline-dark btn-lg text-secondary " id="button" >Login</div>
+    <div id="error-message"></div>
+    </form>
+    </div> 
+    </div>
+  
+</section>
+<hr><hr>
+
+   {{!-- first icon --}}
+<a href="/#body">
+<div id="top">
+  <ion-icon name="arrow-up-outline" id="icon"></ion-icon>
+</div></a>
+<br>
+
+
+  <div class="order-item">
+    <!-- Your order history content here -->
+  </div>
+
+
+<script>
+  function showTooltip() {
+    var tooltip = document.getElementById("tooltip");
+    if(tooltip){
+    tooltip.style.visibility = "visible";
+    tooltip.style.opacity = "1";}
+}
+
+function hideTooltip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.visibility = "hidden";
+    tooltip.style.opacity = "0";
+}
+ document.getElementById('login-button').addEventListener('click', () => {
+        const email = document.getElementById('em').value;
+        const password = document.getElementById('pass').value;
+        // Call the login function with the email and password
+        login(email, password);
+    });
+</script>
+  {{!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> --}}
+</body>
+
+<!-- Include jsonwebtoken library using CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/8.5.1/jsonwebtoken.min.js"></script>
+<!-- Include Axios via CDN in your HTML file -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="module" src="/javascript/script.js" defer></script> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+  
+
+
+  
+
+
+
+
+
+

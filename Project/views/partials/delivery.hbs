@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery Method</title>
+     <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
+                                  <!-- iconicon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                                  <!-- style css -->
+    <link rel="stylesheet"href="/stylesheets/style1.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/datepicker@1.0.10/dist/datepicker.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/datepicker@1.0.10/dist/datepicker.min.js"></script>
+
+<style>
+{{!-- @media (max-width:500px ) and (min-width:200px){
+.box{
+ width:100%;
+ margin: auto !important;
+}     --}}
+
+#delivery{
+    width:100%;
+    height: 100vh;
+   
+}
+body{
+  scroll-behavior: smooth;
+}
+ #h1::before{
+   content:'';
+   width:40%;
+   height:0.125rem;
+   background-color:crimson;
+   position:absolute;
+   bottom:0;
+   left:50%;
+   transform:translate(-50%, -50%);
+   border-radius: 0.625rem;
+}
+#address{
+   display: flex;
+   justify-content: center;
+    padding:  20px;
+    margin: auto;
+    width: 90%;
+}
+
+#input-add{ padding: 10px 30px;}
+
+input,select{
+  background-color:rgba(169, 169, 169,0.30);
+   background-color:rgba(70, 68, 68, 0.160);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+select{color: gray !important;}
+input,select : :hover{
+  background-color: rgba(128, 128, 128,0.1);
+  border: 1px solid black;
+}
+#state{
+    width:37%;
+    padding: 10px 5px;
+}
+#city{
+    width:37%;
+    padding: 10px 5px;
+}
+#select{color: gray;}
+.two{
+
+display: flex;
+justify-content: center  !important;
+}
+#pin,#land,#email,#mn,#username{
+    width:37%;
+    padding: 10px ;
+}
+#cities{
+display: flex !important;
+justify-content: center;
+width:100% !important;
+margin:auto; !important;
+
+}
+.btn{background-color: #9A208C;
+color: whitesmoke;
+border-radius: 2px !important;
+width:50%;
+margin: auto !important;
+text-align: center;
+padding: 10px 20px;}
+
+/*payment design*/
+#payment-design{
+  height: 300px !important;
+  position:sticky !important;
+ } 
+ .box{
+  /* margin-top: 30px; */
+
+  width:500px;
+  margin: auto !important;
+  /* height:130vh; */
+  border-radius: 13px !important;
+  box-shadow:15px 20px 20px rgba(0,0,0,0.5) ,
+   inset 4px 4px 10px white !important;
+ }
+ /* html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ecf0f3;
+}*/
+#card-cvv{
+  width:220px !important;
+}
+.radiogroup {
+  padding: 48px 64px;
+  border-radius: 16px;
+  height:90vh;
+  background: #ecf0f3;
+  box-shadow:
+    4px 4px 4px 0px #d1d9e6 inset,
+    -4px -4px 4px 0px #ffffff inset;
+}
+
+
+.wrapper {
+  margin: 8px 0;
+}
+
+.state {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1e-5;
+  pointer-events: none;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #394a56;
+}
+
+.text {
+  margin-left: 16px;
+  opacity: .6;
+  transition: opacity .2s linear, transform .2s ease-out;
+}
+
+.indicator {
+  position: relative;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  box-shadow:
+    -8px -4px 8px 0px #ffffff,
+    8px 4px 12px 0px #d1d9e6;
+  overflow: hidden;
+}
+
+.indicator::before,
+.indicator::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+}
+
+.indicator::before {
+  background: rgba(0, 0, 0,0.1);
+  box-shadow:
+    -4px -2px 4px 0px #d1d9e6,
+    4px 2px 8px 0px #fff;
+}
+
+.indicator::after {
+  background-color: #ecf0f3;
+ 
+  box-shadow:
+    -4px -2px 4px 0px #fff,
+    4px 2px 8px 0px #d1d9e6;
+  transform: scale3d(1, 1, 1);
+  transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+}
+
+.state:checked ~ .label .indicator::after {
+  transform: scale3d(.975, .975, 1) translate3d(0, 10%, 0);
+  opacity: 0;
+}
+
+.state:focus ~ .label .text {
+  transform: translate3d(8px, 0, 0);
+  opacity: 1;
+ 
+}
+
+.label:hover .text {
+  opacity: 1;
+}
+.card-images{
+       
+      margin-top: 10px;
+       display: flex !important;
+       justify-content: space-between !important;
+}
+img{
+       width: 40px !important; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+       
+}
+.card-details{
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.card-details input{
+height:50px;
+padding-left: 10px;
+border:  1px solid black !important;
+background-color:rgba(169, 169, 169,0.2);
+}
+.card-date{
+  display: flex;
+
+}
+/* #card-cvv{
+  width:30px !important;
+} */
+.card-date{
+  display: flex !important;
+  flex-direction: row !important;
+}
+.card-process select{
+  background-color:rgba(169, 169, 169,0.2);
+  width:53px;
+  height: 50px;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 10px;
+}
+.card-process{
+  display: none;
+}
+.card-process delect option{  font-size: 10px;}
+#bank{
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center !important;
+  font-size: 1em;
+  background-color:rgba(169, 169, 169,0.2);
+
+}
+#bank {
+   /* box-shadow:
+    -4px -2px 4px 0px #d1d9e6,
+    4px 2px 8px 0px #fff; */
+}
+/* Styles for the custom dropdown */
+.custom-dropdown {
+    position: relative;
+    width: 200px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* Style for the dropdown header (visible part) */
+.dropdown-header {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+   border-radius: 7px;
+   border:1px solid rgba(0, 0, 0,0.2);
+    cursor: pointer;
+}
+
+/* Style for the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 100%;
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+/* Style for individual dropdown items */
+.dropdown-content a {
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+/* Style for the selected dropdown item */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+#upi{display: none;}
+.alert{
+  width:60%;
+  margin: auto !important;
+  margin-top: 20px !important;
+  background-color:#394a56;
+  border: none;
+  color: #ddd !important;
+
+
+}
+#proceed{
+  margin: 20px;
+}
+@media (max-width: 600px) and (min-width: 400px) {
+  .box{
+    width:100% !important;
+  }
+   #card-cvv{
+      width:73% !important;
+  }
+}
+@media (max-width: 400px) and (min-width: 100px) {
+  .box{
+    width:100% !important;
+  }
+  .card-date{
+    flex-direction: column !important;
+  }
+  #card-cvv{
+      width:100% !important;
+  }
+}
+</style>                                <!-- responsive -->
+</head>
+
+<body>
+<div class="container">
+  
+  <div class="alert alert-success text-light alert-dismissible fade show" role="alert">
+    <strong>Login</strong> To fill Your Information
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+</div><br>
+   <section id="delivery">
+  <header>
+    .
+    <div class="h1 pb-3 position-relative d-inline-block text-black text-uppercase" id="h1">CHECKOUT</div>
+    <br>
+     <div class="h4"id="h4">Delivery Address</div>
+       
+<form action="/auth/showDeliveryPage" method="post">
+<input type="hidden" name="user_id" value="{{users.ID}}">
+<input type="text" name="username" id="username"placeholder="Username" value="{{users.USERNAME}}" required="required" title="Username is only filled by register" readonly> 
+    {{#if msg}}
+    <p class="{{msg_type}}">{{msg}}</p>
+    {{/if}}
+<div class="row" id="address"> 
+   <input type="text"name="address" id="input-add"placeholder="Address" value=" {{users.ADDRESS}}" required="required" title="Address is only filled by register" readonly>
+</div>
+<div id="cities">
+        <select id="state" name="state" placeholder="Select a State" required="required" title="please fill this field">
+          <option value="" disabled selected id="select" placeholder="Select a State">Select a State</option>
+        </select>
+<select id="city" name="city" placeholder="Select a City" required="required" title="please fill this field">
+<option value="" disabled selected id="select" placeholder="Select a City">Select a City</option>
+</select>
+
+        {{!-- <input type="text" placeholder="Pincode" id="pin"> --}}
+    </div>
+    <br>
+<div action="" class="two">
+<input type="text" id="pin" name="pincode" placeholder="Pincode" required="required" title="please fill this field">
+<input type="text" id="land" name="landmark" placeholder="Landmark" required="required" title="please fill this field">
+</div><br>
+<div action="" class="two">
+<input type="text" name="email" id="email" placeholder="Mobile no" required="required" title="Mobile no is only filled by register" value="{{users.mn}}" readonly>
+<input type="text" name="mn" id="mn" placeholder="Email" required="required" title="email is only filled by register" readonly value="{{users.EMAIL}}"readonly>
+</div>
+<br><br><br>
+{{!-- must button type submit --}}
+  <button class="btn d-grid gap-2 col-6 mx-auto btn-dan" type="submit">Checkout</button>
+</form>
+<br><br></header>
+</section>
+    
+<!-- ... Your HTML code ... -->
+
+<section id="payment-design"class="container">
+
+ <div class="h1 pb-3 position-relative d-inline-block text-black text-uppercase" id="h1">Payment Gateway</div>
+  <div class="box">
+<div class="radiogroup" id="cards">
+    <div class="wrapper">
+      <input class="state" type="radio" name="app" id="a" value="a">
+      <label class="label" for="a">
+        <div class="indicator"></div>
+        <span class="text" id="clickcard">Card</span><br>
+      </label>
+      <!-- <div class="div"> -->
+        <!-- <div class="h4">Card Information</div> -->
+        <div class="card-process">
+        <div class="h6 font-weight-bold">Accepted Cards</div> 
+        <div class="card-images">  
+          <img src="/images/mastercard.svg" alt="">
+          <img src="/images/visa.svg" alt="">
+          <img src="/images/rupay.svg" alt="">
+          <img src="/images/paypal.svg" alt="">
+      </div><br>
+      <div class="h6 font-weight-bold">Card Information</div> 
+      <div class="card-details">
+         <input type="text"placeholder="Card No" id="card-no">
+        <div class="card-date">
+         <input type="date"id="datepicker"placeholder="Select a date"/>
+          <input type="text" placeholder="CVV"id="card-cvv">
+        </div>
+         <input type="text" placeholder="Card name"id="card-name">
+      </div>
+      </div>
+    <div class="wrapper">
+      <input class="state" type="radio" name="app" id="b" value="b">
+      <label class="label" for="b">
+        <div class="indicator"></div>
+        <span class="text">NetBanking</span>
+    </label>
+    <form action="" method="POST" id="netBankingForm">
+      <!-- Bank Dropdown -->
+      <div class="custom-dropdown">
+          <div class="dropdown-header" id="bank-header" tabindex="0">Select Bank</div>
+          <div class="dropdown-content">
+              <!-- Options will be dynamically added here -->
+          </div>
+      </div>
+
+  
+  </form>
+    </div>
+    <div class="wrapper">
+      <input class="state" type="radio" name="app" id="c" value="c">
+      <label class="label" for="c">
+        <div class="indicator"></div>
+        <span class="text">Google Pay</span>
+      </label>
+      <input class="dropdown-header"id="upi" placeholder="UPI No"></div>
+    </div>
+    <div class="wrapper">
+      <input class="state" type="radio" name="app" id="d" value="d">
+      <label class="label" for="d">
+        <div class="indicator"></div>
+        <span class="text"id="cashing">Cash On Delivery</span>
+      </label>
+    </div>
+</div>
+     <a href="/placed" class="text-decoration-none" id="proceed">
+  <button class="btn d-grid gap-2 col-6 mx-auto btn-dan BTN-BUY" id="placeorder" type="submit">Proceed To Place Order</button>
+  </a>
+  </div>
+  </section>
+  <br><br><br>
+
+{{!-- <script>
+// Sample data for cities in different states
+
+const cities = [
+'Mumbai',
+'Delhi',
+'Bangalore',
+'Hyderabad',
+'Tirunelveli' ,'Tutucorin','Madurai',
+'Chennai',
+'Kolkata',
+'Pune',
+'Ahmedabad',
+'Jaipur',
+'Lucknow',
+'Kanpur',
+'Nagpur',
+'Patna',
+'Indore',
+'Thane',
+'Bhopal',
+'Visakhapatnam',
+'Vadodara',
+'Coimbatore,'
+'Ludhiana',
+'Kochi (Cochin)',
+'Agra',
+'Varanasi',
+'Meerut',
+'Nashik',
+'Rajkot',
+'Srinagar',
+'Amritsar',
+'Navi Mumbai',
+'Allahabad',
+'Ranchi',
+'Howrah',
+'Jabalpur',
+'Gwalior',
+'Vijayawada',
+'Jodhpur',
+'Raipur',
+'Kota',
+'Guwahati',
+'Chandrapur',
+'Solapur',
+'Tiruchirapalli (Trichy)',
+'Bareilly',
+'Moradabad',
+'Mysore',
+'Tiruppur',
+'Gurgaon',
+'Aligarh',
+'Jalandhar',
+'Bhubaneswar',
+'Salem',
+'Guntur',
+'Bhiwandi',
+'Saharanpur',
+'Gorakhpur',
+'Bhilai',
+'Siliguri',
+'Durgapur',
+'Asansol',
+'Ajmer',
+'Kolhapur',
+'Jamshedpur',
+'Udaipur',
+'Jhansi',
+'Nellore',
+'Mangalore',
+'Belgaum',
+'Ambattur'
+];
+document.addEventListener("DOMContentLoaded", function() {
+    const stateDropdown = document.getElementById("state");
+    const cityDropdown = document.getElementById("city");
+
+    function populateDropdown(dropdown, options) {
+        dropdown.innerHTML = ''; // Clear the existing options
+        options.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option;
+            optionElement.textContent = option;
+            dropdown.appendChild(optionElement);});
+        }
+  
+    // Define your 'states' and 'cities' arrays here
+  const states = [
+
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Chandigarh",
+  "Delhi",
+  "Puducherry",
+];
+
+
+    // Populate the "State" dropdown
+    populateDropdown(stateDropdown, states);
+
+    // Populate the "City" dropdown (initially with the default "Select a City" option)
+    populateDropdown(cityDropdown, cities);
+
+    // Event listener for the "State" dropdown
+   stateDropdown.addEventListener("change", function() {
+    const selectedState = stateDropdown.value;
+    let selectedCities = cityDropdown.value;
+    if (selectedCities) {
+         selectedCities = cities[selectedCities];
+        populateDropdown(cityDropdown, selectedCities);
+    } else if(selectedState) {
+        
+        populateDropdown(stateDropdown, selectedState);
+    }
+});
+});
+
+</script> --}}
+<script>
+  const citiesByState = {
+   
+    "Andhra Pradesh": [
+        "Visakhapatnam",
+        "Vijayawada",
+        "Guntur",
+        "Nellore",
+        // Add more cities in Andhra Pradesh
+    ],
+    "Tamil Nadu": [
+        "Chennai",
+        "Coimbatore",
+        "Madurai",
+        "Tiruchirapalli",
+        // Add more cities in Tamil Nadu
+    ],
+    "Maharashtra": [
+        "Mumbai",
+        "Pune",
+        "Nagpur",
+        "Thane",
+        // Add more cities in Maharashtra
+    ],
+    "Karnataka": [
+        "Bangalore",
+        "Mysore",
+        "Hubli",
+        "Mangalore",
+        // Add more cities in Karnataka
+    ],
+    "Gujarat": [
+        "Ahmedabad",
+        "Surat",
+        "Vadodara",
+        "Rajkot",
+        // Add more cities in Gujarat
+    ],
+    "Rajasthan": [
+        "Jaipur",
+        "Jodhpur",
+        "Udaipur",
+        "Kota",
+        // Add more cities in Rajasthan
+    ],
+    "Uttar Pradesh": [
+        "Lucknow",
+        "Kanpur",
+        "Agra",
+        "Varanasi",
+        // Add more cities in Uttar Pradesh
+    ],
+    // Add more states and their cities here
+};
+document.addEventListener("DOMContentLoaded", function () {
+            const stateDropdown = document.getElementById("state");
+            const cityDropdown = document.getElementById("city");
+
+            function populateDropdown(dropdown, options) {
+                dropdown.innerHTML = ''; // Clear the existing options
+                options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    dropdown.appendChild(optionElement);
+                });
+            }
+ const states = [
+  "Tamil Nadu",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Chandigarh",
+  "Delhi",
+  "Puducherry",
+];
+populateDropdown(stateDropdown, states);
+          stateDropdown.addEventListener("change", function () {
+                const selectedState = stateDropdown.value;
+
+              if (selectedState) {
+                    const selectedCities = citiesByState[selectedState] || ["Select a City"];
+                    populateDropdown(cityDropdown, selectedCities);
+                } else {
+                    // If no state is selected, reset the city dropdown
+                    populateDropdown(cityDropdown, citiesByState);
+                }
+            });
+            // we add manually new event
+             stateDropdown.dispatchEvent(new Event("change"));
+        });
+        
+</script>
+<script>
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+     event.preventDefault();
+    const bankHeader = document.getElementById("bank-header");
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+    // List of banks
+    const banks = [
+        "HDFC Bank",
+        "ICICI Bank",
+        "State Bank of India",
+        "Axis Bank",
+        "Kotak Mahindra Bank",
+        "IDFC First Bank",
+        "Bank of Baroda",
+        "Punjab National Bank",
+        "Canara Bank",
+        "IndusInd Bank",
+        "Bank of India",
+        "State Bank",
+        "Bank of Maharastra",
+        "Andhra Bank",
+        "Cental Bank of India",
+        "Indian Bank",
+        "IDBI Bank",
+        "Karur Vysya Bank",
+        "State Bank of Hyderabad",
+        "State Bank of Mysore"
+        ,"State Bank of Patalia",
+        "State Bank of Tranvacore",
+        "Union Bank of India",
+        "United Bank of India",
+        "Tamilnad Mercantile Bank Ltd",
+        "Jammu & Kashmir Bank"
+    ];
+const drophead = document.querySelector('.dropdown-header');
+    // Populate the dropdown content with bank options
+    banks.forEach((bank) => {
+        const link = document.createElement("a");
+        link.textContent = bank;
+        link.href = "#"; // You can set this to the actual bank URL
+        dropdownContent.appendChild(link);
+
+        // Handle click event for the link
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            // Do something when a bank is selected
+            alert("You selected " + bank);
+            drophead.textContent = `${bank}`;
+        });
+    });
+
+    // Toggle dropdown content when clicking the header
+    bankHeader.addEventListener("click", function () {
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+
+    // Close the dropdown content when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!bankHeader.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.style.display = "none";
+        }
+    });
+
+    // Prevent the dropdown from closing when clicking inside it
+    dropdownContent.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function (event) {
+     event.preventDefault();
+    const cardRadio = document.getElementById("a");
+    const cardProcess = document.querySelector(".card-process");
+
+    // Add a click event listener to the card radio button
+    cardRadio.addEventListener("click", function () {
+        // Toggle the visibility of the card-process section
+        if (cardProcess.style.display === "none") {
+            cardProcess.style.display = "block";
+        } else {
+            cardProcess.style.display = "none";
+        }
+    });
+    const cardRadio1 = document.getElementById("b");
+    const dropdown = document.querySelector('.custom-dropdown');
+    cardRadio1.addEventListener("click",function(event) {
+      event.preventDefault();
+      if(dropdown.style.display === "none"){
+        dropdown.style.display = "block";
+      }
+      else{dropdown.style.display = "none";}
+    })
+    const cardRadio2 = document.getElementById("c");
+    const upi = document.querySelector('#upi');
+    cardRadio2.addEventListener("click",function(event) {
+       event.preventDefault();
+      if(upi.style.display === "none"){
+        upi.style.display = "block";
+      }
+      else{upi.style.display = "none";}
+    })
+});
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const paymentRadios = document.querySelectorAll(".state");
+
+    paymentRadios.forEach((radio) => {
+      radio.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default behavior of radio buttons
+      });
+    });
+  });
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/javascript/script.js" defer></script> 
+</body>
+</html>

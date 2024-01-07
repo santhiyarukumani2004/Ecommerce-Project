@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Aruna Boutique</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">  
+    <style>
+          body{
+     background-color: black;
+    font-family: 'Merriweather', serif;
+            }
+{{!-- img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    {{!-- border: 4px dotted white;
+  border-radius: 100% ;
+  padding: 5px; --}}
+
+.h5{
+    font-size: 18px;
+    word-spacing: 5px;
+    margin-top: 7px;
+}
+     .container{
+       font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       color: white;
+       display: flex;
+       position: relative;
+       align-items: center;
+       justify-content: space-between;
+       flex-direction: column;
+       font-size: 1em;
+      }
+
+    #wrapper{
+     
+      padding: 1rem;
+      margin-top: 5rem;
+    }
+.image-container {
+  display: inline-block;
+  position: relative;
+  width: 200px; /* Adjust this value to match your image size */
+  height: 200px; /* Adjust this value to match your image size */
+   background: #cc2b5e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #753a88, #cc2b5e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #753a88, #cc2b5e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+   mix-blend-mode: multiply;
+}
+
+.image-container:before {
+  content: "";
+  position: absolute;
+  top: -5px; /* Adjust this value to control the border thickness */
+  left: -5px; /* Adjust this value to control the border thickness */
+  right: -5px; /* Adjust this value to control the border thickness */
+  bottom: -5px; /* Adjust this value to control the border thickness */
+  border: 3px dashed white; /* Adjust border style and thickness as needed */
+  border-radius: 50%;
+  z-index:3;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+ button {
+    color: #f32179;
+    padding:20px;
+    border-color: #f32179;
+    font-size: 30px;
+    transition: 0.2s;
+    background-color: transparent;
+    border-radius: 3em;
+    cursor: pointer;
+}
+button a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+button:hover {
+    color: #fff;
+    background: #f32179;
+    box-shadow: 0 0 10px #f32179, 0 0 30px #f32179, 0 0 60px #f32179;
+}  
+    
+    
+    </style>
+
+    
+</head>
+<body>
+{{!-- <div class="container-fluid d-flex justify-content-center align-items-center">
+    <img src="/images/download.png"   class="rounded mx-auto d-block  " alt="">
+    <div class="h6">Welcome Boutique...</div> --}}
+ <div class="container">
+    <div id="days">
+      
+    </div>
+
+      <div id="wrapper">
+   <span id = "hours">00</span>
+   <span>:</span>
+   <span id = "mins">00</span>
+   <span>:</span>
+   <span id ="seconds">00</span>
+   <span id="ampm">AM</span>
+      </div>
+  
+<div class="image-container" id="loader-container">
+ <img src="/images/download.png"  class="loader"  alt=""> 
+</div>
+ <div class="h5">Online Shopping</div>
+ <hr>
+ <button id="loader">
+  <a href="/login">Open</a>
+</button>
+{{!-- <button><a href="/register">
+    Login now 
+</a></button> --}}
+</div>
+   <script>
+    let ampm = document.getElementById('ampm');
+   function displayTime() {
+      let dateTime = new Date();
+       let hr = dateTime.getHours();
+       let min = padZero(dateTime.getMinutes());
+       let sec =padZero(dateTime.getSeconds());
+       if(hr>12)
+       {
+        hr = hr - 12;
+        ampm.innerHTML = 'PM';
+       }
+       else
+       {
+        ampm.innerHTML = 'AM';
+       }
+      
+       document.getElementById('hours').innerHTML = padZero(hr);
+       document.getElementById('mins').innerHTML = min;
+       document.getElementById('seconds').innerHTML = sec;
+   
+      }
+    setInterval(displayTime,500);
+    function padZero(num) {
+       return num<10?"0"+num:num;
+    }
+
+    function timer(){
+      let date = new Date();
+      let minutes =  date.getMinutes();
+      let seconds = date.getSeconds();
+      
+     let start = document.getElementById('start');
+     let stop = document.getElementById('stop');
+     let reset = document.getElementById('reset');
+     start.addEventListener('click',(e) => {
+      document.getElementById('minutes').innerHTML = minutes;
+      document.getElementById('seconds').innerHTML = seconds;
+     })
+      setInterval(e,100);
+    }
+    {{!-- var currentDate = new Date();
+     var month = currentDate.getMonth();
+     var day = currentDate.getDate();
+     var fulldate = month + "/" +day "/"+year;
+    document.getElementById("day").innerHTML = fulldate; --}}
+   </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</div> 
+</body>
+</html>

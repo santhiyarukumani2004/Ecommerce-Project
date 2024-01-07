@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report</title>
+                              <!-- fontawesome -->
+       <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
+                                  <!-- iconicon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                                  <!-- style css -->
+    <link rel="stylesheet"href="/stylesheets/style1.css">
+<style>
+    .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 40px;
+      letter-spacing: 2px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}.reporter
+{    display: flex;
+    justify-content: space-between;
+       
+       
+        width: 100%;
+        margin: auto;
+}
+.reporter .h5
+{
+   padding: 10px ;
+      border: 1px solid black;
+   width: 50%;
+   height: 12vh !important;
+   margin: auto;
+   text-align: center;
+    color: #ff1361;
+    font-weight: bold;font-size: 24px;
+}
+.spanning{
+    display: flex;
+    justify-content: space-between;
+   width: 100%;
+   
+   margin: auto;
+  
+    padding-left: 10px;
+}
+.spanning .h6{
+  border: 1px solid black;
+  width: 50%;
+  margin: auto;
+ padding:0 8px;
+font-weight: bold;
+font-size: 20px;
+text-align: center;
+}
+#heading{
+  font-weight: bold;
+}
+.subhead{
+  font-weight: 600;
+}
+#dressimg{
+  width: 100px;
+}
+.same{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.same button{
+  border-radius: 2px !important;
+}
+.table{border: 3px !important;}
+.thead tr{
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color:darkgray !important;
+}
+.image{
+  width:60px !important;
+  height: 50px !important;
+  object-fit: cover;
+}
+.h1{
+  text-align: center;
+  padding: 10px;
+  color: darkgray;
+  font-weight: bold;
+}
+.h2{
+  position: relative;
+}
+.spanning{
+  border: 1px dotted green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.h2::before{
+   content:'';
+   width:10%;
+   height:0.125rem;
+   background-color:red;
+   position:absolute;
+   bottom:0;
+   left:20%;
+   transform:translate(-50%, -50%);
+   border-radius: 0.625rem;
+}
+#h2{
+  letter-spacing: 2px;
+  word-spacing: 1px;
+  position: relative;
+  padding-left: 80px;
+}
+#h2::before{
+   content:'';
+   width:15%;
+   height:0.125rem;
+   background-color:red;
+   position:absolute;
+   bottom:0;
+   left:30%;
+   transform:translate(-50%, -50%);
+   border-radius: 0.625rem;
+}
+</style>
+    </head>
+    <body>
+ 
+
+    <div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+       <h3 class="animate-charcter">REPORTING INFORMATION FOR FABULOUS BOUTIQUE</h3>
+    </div>
+  </div>
+  <hr><hr>
+  {{!-- <div class="reporter">
+    <div class="h5">Dress Id</div>
+    <div class="dressidcontainer">
+    </div>
+    <div class="h5">Dress</div>
+    <div class="h5">Dress Name</div>
+    <div class="h5">Stock
+    <div class="spanning">
+        <div class="h6" ID="IN">In</div>
+        <div class="h6">Out</div>
+    </div>
+    </div>
+     <div class="h5">Total</div>
+  </div> --}}
+  <div class="same"><a href="#report1"> <button type="button" class="btn btn-success">Report1</button></a>
+  <a href="#report2"><button type="button" class="btn btn-danger">Report2</button></a> 
+</div>
+<br>
+<h1>Report  1</h1>
+  <table class="table border-2px" id="report1">
+    <br><br><div class="h2">STOCK OF PRODUCTS</div><br><br>
+      <thead class="thead">
+        <tr>
+          <th>Product ID</th>
+          <th>Products</th>
+          <th>Product Names</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody class="dressidcontainer">
+        <!-- Rows for dress data will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<h1>Report  2</h1>
+<br><br>   <br><br><div class="h2"id="h2">SALES PRODUCT</div><br><br>
+<div class="orders1">
+<div class="spanning">
+<div class="h1">TOTAL AMOUNT:&nbsp; &nbsp;<span id="whole">{{totalAmount}}</span></div>
+<div class="h1">TOTAL DRESSES: &nbsp; &nbsp;<span id="dresses">{{totalDresses}}</span></div>
+</div>
+<table class="table" id="report2">
+  <tr>
+    <th>Order ID</th>
+    <th>Ordered Date</th>
+    <th>Status</th>
+    <th>Product ID</th>
+    <th>Products</th>
+    <th>Product Names</th>
+    <th>Quantity</th>
+    <th>Product Prices</th>
+  </tr>
+  {{#each reportRows}}
+  <tr>
+    <td>{{order_id}}</td>
+    <td>
+      {{#with ordered_date}}
+      <div>{{toLocaleDateString}}</div>
+      <div>{{toLocaleTimeString}}</div>
+      {{/with}}</td>
+    <td>{{status}}</td>
+    <td>{{dress_id}}</td>
+    <td>
+      <img src="{{dress}}" class="image"></td>
+    <td>{{dress_name}}</td>
+    <td>{{quantity}}</td>
+    <td>{{dress_price}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+
+</div>
+
+
+</div>
+ </body>
+ <script>
+ document.addEventListener('DOMContentLoaded', function () {
+  // Assuming itemList contains dress data
+  const itemList = [
+    {
+      dressId: 'Dress1',
+      Image: '/images/kurti.png',
+      Title: 'Navy Blue Kurti',
+      Total:1000
+    },
+    {
+      dressId: 'Dress2',
+      Image: '/images/kurti3.png',
+      Title: 'White Print Kurti',
+       Total:1500
+    },
+    {
+      dressId: 'Dress3',
+      Image: '/images/kurti2.png',
+      Title: 'Red Print Anarkali',
+       Total:2000,
+    },
+    {
+      dressId: 'Dress4',
+      Image: '/images/kurti4.png',
+      Title: 'Black Print Anarkali',
+       Total:800
+    },
+    {
+      dressId: 'Dress5',
+      Image: '/images/kurti5.png',
+      Title: 'Brown Print Anarkali',
+       Total:900
+    },
+    {
+      dressId: 'Dress6',
+      Image: '/images/kurti6.png',
+      Title: 'Black Anarkali',
+       Total:2000
+    },
+    {
+      dressId: 'Dress7',
+      Image: '/images/kurti7.png',
+      Title: 'Pink Anarkali',
+       Total:2500
+    },
+    {
+      dressId: 'Dress8',
+      Image: '/images/kurti8.png',
+      Title: 'Gray Print Anarkali',
+       Total:600
+    },
+    {
+      dressId: 'Dress9',
+      Image: '/images/kurti9.jpg',
+      Title: 'SkyBlue Print Anarkali',
+       Total:2400
+    },
+    {
+      dressId: 'Dress10',
+      Image: '/images/kurti10.jpg',
+      Title: 'White Print Anarkali',
+       Total:5000
+    },
+    {
+      dressId: 'Dress11',
+      Image: '/images/kurti11.png',
+      Title: 'Red Wedding wear',
+       Total:5000
+    },
+    {
+      dressId: 'Dress12',
+      Image: '/images/kurti2.png',
+      Title: 'Merun Anarkali',
+       Total:2200
+    },
+    {
+    dressId: 'Dress13',
+      Image: '/images/girl.jpg',
+      Title: 'Blue with orange shade short gown',
+       Total:700
+    },
+    {
+      dressId: 'Dress14',
+      Image: '/images/girl1.jpg',
+      Title: 'Red Print Anarkali',
+       Total:900
+    },
+   
+
+  ];
+
+  const tableBody = document.querySelector('.dressidcontainer');
+
+  itemList.forEach((dress) => {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>${dress.dressId}</td>
+      <td><img src="${dress.Image}" alt="${dress.Title}" style="max-width: 100px;"></td>
+      <td>${dress.Title}</td>
+      <td id="totally">${dress.Total}</td> 
+    `;
+    tableBody.appendChild(newRow);
+  });
+});
+ </script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  // Assuming itemList contains dress data
+     const dresses = [];
+
+// Get all dress elements within the dressContainer
+const dressElements = document.querySelectorAll("#card");
+
+// Loop through each dress element and extract data
+dressElements.forEach((dressElement) => {
+    const dressId = dressElement.getAttribute("data-dress-id");
+    const dressName = dressElement.querySelector("#card-title").textContent;
+    const dressImage = dressElement.querySelector("#card-img-top").getAttribute("src");
+    const dressPriceText = dressElement.querySelector("#card-text").textContent;
+    
+    // Extract the price as a number (remove "Rs " and convert to a number)
+    const dressPrice = parseFloat(dressPriceText.replace("Rs ", ""));
+    
+    // Create a dress object and push it to the dresses array
+    const dress = {
+        dressId,
+        dressImage,
+        dressName,
+        Price: dressPrice,
+    };
+    
+    dresses.push(dress);
+});
+
+// Now, dresses array contains the dynamically extracted dress data
+console.log(dresses);
+// Assuming you have already extracted dress data into the 'dresses' array
+
+// Get a reference to the table element where you want to display the data
+const table = document.createElement("table");
+table.id = "dressTable"; // Set the table ID if needed
+
+// Create a table row for the header row
+const headerRow = document.createElement("tr");
+
+// Create table header cells for the headers
+const headers = ["Product ID", "Products", "Product Names", "Total"];
+
+headers.forEach((headerText) => {
+  const th = document.createElement("th");
+  th.textContent = headerText;
+  headerRow.appendChild(th);
+});
+
+// Append the header row to the table
+table.appendChild(headerRow);
+
+// Loop through the 'dresses' array and create a table row for each dress
+dresses.forEach((dress) => {
+  const tr = document.createElement("tr");
+
+  // Create table data cells for each dress property
+  const tdProductId = document.createElement("td");
+  tdProductId.textContent = dress.dressId;
+  const tdProductImage = document.createElement("td");
+  const img = document.createElement("img");
+  img.src = dress.dressImage;
+  tdProductImage.appendChild(img);
+  const tdProductName = document.createElement("td");
+  tdProductName.textContent = dress.dressName;
+  const tdTotal = document.createElement("td");
+  tdTotal.textContent = `Rs ${dress.Price}`;
+
+  // Append the table data cells to the row
+  tr.appendChild(tdProductId);
+  tr.appendChild(tdProductImage);
+  tr.appendChild(tdProductName);
+  tr.appendChild(tdTotal);
+
+  // Append the row to the table
+  table.appendChild(tr);
+});
+
+// Get a reference to the element where you want to append the table
+const container = document.querySelector(".dressContainer");
+
+// Append the table to the container
+container.appendChild(table);
+
+    });
+    </script>
+</body>
+<script src="/javascript/script.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+   {{!--  //GC8HNM3SM9MVC1GX3H3AEM2Y[recovery]
+    //+17657393220[twilo phone no]
+    //ACb4b9245e8caf571456b8f309546409dd[account-sid]
+    //3906965afb33f3d0a60f928decb94bd2[auth] --}}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset Confirmation</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet">
+                                 <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                                  <!-- iconicon -->
+    {{!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                                  <!-- style css --> --}}
+    <link rel="stylesheet" href="/stylesheets/style1.css">
+                                <!-- responsive -->
+   
+{{!-- <link rel="stylesheet" href="responsive.css">                            --}}
+<style>
+    .box{
+  width:100%;
+  height:40%;
+  position: fixed;
+  position: absolute;
+  left:0;
+  top:0;
+  border-radius:30% 70% 100% 0% / 0% 0% 100% 100%;
+  background: #FF0099;
+  background-image: linear-gradient(45deg,#3023AE 0%,#FF0099 100%);
+  border-radius:0% 100% 100% 0% / 0% 0% 100% 100% 
+}
+ svg{
+    color: black;
+  position: absolute;
+  z-index: 2;
+  top:7%;
+  left:10%;
+ }  
+ .h2{
+  /* z-index: 3; */
+  text-align: center;
+  position: absolute;
+  letter-spacing: 1px;
+  color: beige;
+  text-transform: uppercase;
+  top:20%;
+   left: 50%;
+   font-size: 33px;
+ } 
+  .success1{
+   color: green !important;
+    font-weight: bold;
+    text-align: center !important;
+    padding: 5px;
+  }
+   .error{
+   color: red !important;
+    font-weight: bold;
+    text-align: center !important;
+    padding: 5px;
+  }
+#head{
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    color: grey;
+    font-weight: bold;
+}
+#head:before{
+   content:'';
+   width:20%;
+   height:0.125rem;
+   background-color:black;
+   position:absolute;
+   bottom:0;
+   left:50%;
+   transform:translate(-50%, -50%);
+   border-radius: 0.625rem;
+}
+#form
+{ 
+border: 3px dotted darkgray;
+padding: 30px;
+display:flex !important;
+flex-direction:column !important;
+justify-content:center !important;
+white-space: nowrap !important;
+}
+{{!-- form{
+    width: 70%;
+    margin: auto !important;
+} --}}
+.inputs{
+    padding: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-left: 20px;
+    text-align: center;
+}
+.inputs input{
+    width:60%;
+    padding:  8px 10px;
+    margin: 16px;
+}
+#email{
+    margin-left: 80px;
+}
+.submitbtn{
+    text-align: center;
+    width:40%;
+    margin: auto;
+    padding: 7px 20px;
+    border: none;
+    color: aliceblue;
+    background-color: crimson;
+
+}
+</style>
+
+</head>
+<body>
+
+     <a href="/#login">
+  <i class="bi bi-arrow-left"></i>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+  </svg></a>
+ <section class="reset">
+    <div class="container">
+        <br><br><br><br><br>
+        <form action="/auth/ResetPassword" method="post" id="form">
+          <div class="h1 text-align-center font-weight-bold"id="head">Reset Password</div>
+          <br><br>
+          <p>{{ msg }}</p>
+          <div class="inputs">
+             <label for="email">Email:</label>
+            &nbsp; &nbsp; &nbsp;<input type="email" id="email" name="email" required>
+          </div>
+          <div class="inputs">
+            <label for="newPassword">New Password:</label>
+            <input type="password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="newpassword"
+     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="newPassword" name="newPassword" required>
+          </div>
+     <br>
+              <button class="submitbtn" type="submit">Submit</button>
+          
+        </form>
+
+    </div>
+
+ </section> 
+</body>
+</html>

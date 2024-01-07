@@ -1,0 +1,76 @@
+ <nav>
+        <div class="cart-package">
+        <div class="cart-title">Cart Items</div>
+
+        <div class="message2">
+         <img src="/images/empty-cart.png" class="img-fluid" id="car"></ion-icon>
+          <p>Your Cart Is Empty!!</p>
+          </div>
+        <div class="message1">Item Removed Your Cart</div>
+        <div class=" message ">Product Already Exist In Cart</div>
+        <div class="cart-content ">
+
+
+          <div class="cart-box">
+               <div class="image-column">
+               <img src="/images/kurti.png" alt="" class="cart-img">
+                </div>
+                <div class="detail-column">
+                <div class="cart-dress-title">Navy Blue kurti</div>
+               <div class="price-box">
+                  <div class="cart-price">Rs.1000</div>
+                   <div class="cart-amt">Rs.1000</div>
+               </div>
+              </div>
+            <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+              <div class="trash-column">
+                 <ion-icon name="trash" class="cart-remove"></ion-icon>
+              </div>
+          </div>
+          
+         <div class="cart-box">
+  <div class="image-column">
+    <img src="/images/girl.jpg" alt="" class="cart-img">
+  </div>
+  <div class="detail-column">
+    <div class="cart-dress-title">Blue with orange shade gown</div>
+    <div class="price-box">
+      <div class="cart-price">Rs.1000</div>
+      <div class="cart-amt">Rs.1000</div>
+    </div>
+  </div>
+  <div class="quantity bag">
+                    <div class="quantity_counter">
+                        <button id="min-bag"><i class=" fa-solid fa-minus"></i></button>
+                        <p id="bag_quantity">0</p>
+                        <button id="max-bag"><i class=" fa-solid fa-plus"></i></button>
+
+
+                    </div>
+
+  <div class="trash-column">
+    <ion-icon name="trash" class="cart-remove"></ion-icon>
+  </div>
+          </div>
+</div>
+ <div class="cart"  id="cart">
+  <div id="cart-count" class="cart-count">0</div>
+  <ion-icon name="cart-outline" id="cart-icon"class="text-black right-0"></ion-icon>
+</div>
+<div class="total">
+  <div class="total-title">Total</div>
+  <div class="total-price" id="total-price">Rs 0</div>
+</div>
+<div class="place">
+<button class="btn-buy" onclick="window.href='/Payment';">Place Order</button></div>
+{{!-- <ion-icon name="close" id="cart-close"></ion-icon></div> --}}
+</div>
+</div>
+</nav>

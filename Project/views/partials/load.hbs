@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to buy
+
+    </title>
+<style>
+body{
+		background: #000;
+	}
+
+.loader{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	animation: loader-rotate 1s infinite cubic-bezier(0.62, 0.49, 0.52, 0.32);
+	transform: skew(20deg, 20deg);
+	transform-origin: center;
+}
+.main-div{
+position: absolute;
+left: 40%;
+top: 30%;
+width: auto;
+}
+.loader-icon1{
+	border-bottom: 2px solid red;
+	rotate: 4deg;
+}
+.loader-icon2{
+border-bottom: 2px solid #fff;
+rotate: 129deg;
+}
+
+.loader-icon3{
+border-bottom: 2px solid green;
+rotate: 272deg;
+}
+
+.text {
+    color: #fff;
+    position: relative;
+    top: 37px;
+    left: 22px;
+}
+@keyframes loader-rotate{
+	0%{
+	transform: skew(20deg, 20deg) rotate(0deg)
+	}
+	100%{
+		transform: skew(20deg, 20deg) rotate(360deg)
+	}
+}
+
+
+</style>
+</head>
+<body>
+ <div class="main-div">
+	<div class="loader-icon1 loader"></div>
+	<div class="loader-icon2 loader"></div>
+	<div class="loader-icon3 loader"></div>
+	<div class="text">Loading...</div>
+</div>
+
+
+<script>
+ setTimeout(function() {
+                window.location.href = '/delivery'; // Replace with your actual home page URL
+            }, 10000); // 5 minutes in milliseconds
+</script>
+</body>
+
+</html>

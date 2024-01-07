@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .order-placed-container {
+            display: flex;
+            align-items: center;
+             flex-direction: column !important;
+            justify-content: space-between;
+        }
+
+        .order-placed-text {
+            font-size: 29px;
+            color: #333;
+            margin-top: 20px ;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in-out; /* Fade-in animation for the text */
+        }
+
+        .circle-container {
+            display: flex;
+            align-items: center;
+           
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #00c853; /* Green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            animation: scaleUp 2s ease forwards, slideIn 2s ease forwards; /* Animation for the circle */
+        }
+
+        .tick-mark {
+            font-size: 35px;
+            color: #fff; /* White color for the tick mark */
+            transform: translateX(-50px); /* Initial position outside the circle */
+            transition: transform 0.8s ease-in-out; /* Slide-in animation for the tick */
+        }
+
+        .circle.active .tick-mark {
+            transform: translateX(0); /* Move the tick inside the circle */
+        }
+
+        /* Keyframes animation for scaling up the circle */
+        @keyframes scaleUp {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Keyframes animation for sliding in the circle */
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+              
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="order-placed-container">
+        <div class="circle-container">
+            <div class="circle">
+                <div class="tick-mark">&#10003;</div>
+            </div>
+        </div>
+        <div class="order-placed-text">Order Placed</div>
+    </div>
+
+   <script>
+        // JavaScript to trigger the animations and redirect after 5 minutes
+        setTimeout(function() {
+            const circle = document.querySelector('.circle');
+            const tick = document.querySelector('.tick-mark');
+            const text = document.querySelector('.order-placed-text');
+
+            // Add 'active' class to trigger animations
+            circle.classList.add('active');
+            tick.classList.add('active');
+
+            // After a delay, fade in the text
+            setTimeout(function() {
+                text.style.opacity = '1';
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+
+            // Redirect to the home page after 5 minutes (300,000 milliseconds)
+            setTimeout(function() {
+                window.location.href = '/'; // Replace with your actual home page URL
+            }, 3000); // 5 minutes in milliseconds
+        }, 1000); // Adjust the delay (in milliseconds) as needed
+    </script>
+</body>
+</html>
